@@ -21,3 +21,148 @@ Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 10:29:40 -0400
 Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
 An unauthorized connection attempt was rejected
 Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 10:29:40 -0400
+Started GET "/" for 127.0.0.1 at 2021-10-26 11:37:23 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms | Allocations: 2247)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-10-26 11:37:23 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered layouts/_flash.html.erb (Duration: 0.6ms | Allocations: 269)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 72.9ms | Allocations: 17875)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.5
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 1861.4ms | Allocations: 25754)
+Completed 200 OK in 1927ms (Views: 1897.2ms | ActiveRecord: 5.3ms | Allocations: 35432)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-10-26 11:37:26 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:37:26 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+An unauthorized connection attempt was rejected
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:37:26 -0400
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-10-26 11:37:39 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1590)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 6364)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 8344)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-10-26 11:37:39 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:37:39 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+An unauthorized connection attempt was rejected
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:37:39 -0400
+Started POST "/users" for 127.0.0.1 at 2021-10-26 11:37:55 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_type"=>"Paciente", "email"=>"edgar4@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarse"}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "edgar4@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Create (89.6ms)[0m  [1m[32mINSERT INTO "users" ("user_type", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_type", "Paciente"], ["email", "edgar4@gmail.com"], ["encrypted_password", "$2a$12$wwglwm1S1T4Eje2EWT62W.Nu673kBI9DP27bSzR5JxBDQjK6Fve1u"], ["created_at", "2021-10-26 15:37:55.387789"], ["updated_at", "2021-10-26 15:37:55.387789"]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (21.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 514ms (ActiveRecord: 113.5ms | Allocations: 12774)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-26 11:37:55 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:4:in `index'
+Redirected to http://127.0.0.1:3000/principalP
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms | Allocations: 1539)
+
+
+Started GET "/principalP" for 127.0.0.1 at 2021-10-26 11:37:55 -0400
+Processing by BoardsController#index_patient_board as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:7:in `index_patient_board'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:7:in `index_patient_board'
+  [1m[36mPatient Load (1.5ms)[0m  [1m[34mSELECT "patients".* FROM "patients" WHERE "patients"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:10:in `index_patient_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/board_patient.html.erb within layouts/application
+  [1m[36mOffer Load (31.7ms)[0m  [1m[34mSELECT "offers".* FROM "offers" WHERE (status = 'Activo')[0m
+  ↳ app/views/boards/board_patient.html.erb:19
+  [1m[36mCACHE Patient Load (0.0ms)[0m  [1m[34mSELECT "patients".* FROM "patients" WHERE "patients"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 1]]
+  ↳ app/views/boards/board_patient.html.erb:35
+  Rendered boards/board_patient.html.erb within layouts/application (Duration: 34.7ms | Allocations: 1567)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered menu/_logo_menu.html.erb (Duration: 1.2ms | Allocations: 664)
+  Rendered menu/_patient.html.erb (Duration: 4.1ms | Allocations: 2304)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 66)
+  Rendered layout layouts/application.html.erb (Duration: 55.8ms | Allocations: 9035)
+Completed 200 OK in 92ms (Views: 26.2ms | ActiveRecord: 37.5ms | Allocations: 23134)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-10-26 11:37:55 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:37:55 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/channels/application_cable/connection.rb:11:in `find_verified_user'
+[ActionCable] [9] Registered connection (Z2lkOi8vbWVkaWNhbC9Vc2VyLzk)
+[ActionCable] [9] RoomChannel is streaming from room_channel:9
+[ActionCable] [9] CallChannel is transmitting the subscription confirmation
+[ActionCable] [9] CallChannel is streaming from call_channel:9
+[ActionCable] [9]   [1m[36mDoctor Load (0.6ms)[0m  [1m[34mSELECT "doctors".* FROM "doctors" WHERE "doctors"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 1]]
+[ActionCable] [9]   ↳ app/services/users_connected.rb:8:in `initialize'
+[ActionCable] [9]   [1m[36mPatient Load (0.5ms)[0m  [1m[34mSELECT "patients".* FROM "patients" WHERE "patients"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 1]]
+[ActionCable] [9]   ↳ app/models/user.rb:25:in `full_name'
+[ActionCable] [9] RoomChannel is transmitting the subscription confirmation
+Started GET "/users/sign_out" for 127.0.0.1 at 2021-10-26 11:51:25 -0400
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (email = 'edgar4@gmail.com')[0m
+  ↳ app/controllers/sessions_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sessions_controller.rb:24:in `destroy'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "login_status" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["login_status", "Logout"], ["updated_at", "2021-10-26 15:51:26.028175"], ["id", 9]]
+  ↳ app/controllers/sessions_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (19.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sessions_controller.rb:24:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 69ms (ActiveRecord: 35.1ms | Allocations: 10729)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-26 11:51:26 -0400
+Processing by HomeController#index as HTML
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 326)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-10-26 11:51:26 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 67)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1184)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 6063)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 6716)
+
+
+[ActionCable] [9] Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:51:26 -0400
+[ActionCable] [9] RoomChannel stopped streaming from room_channel:9
+[ActionCable] [9] CallChannel stopped streaming from call_channel:9
+Started GET "/cable" for 127.0.0.1 at 2021-10-26 11:51:26 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:51:26 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+An unauthorized connection attempt was rejected
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-10-26 11:51:26 -0400
