@@ -1,0 +1,60 @@
+<div class="card" style="width: 96%; margin-left:2%; margin-right:2%; margin-top:2%;">
+  <div class="card-header">
+    <h6 style="margin-left:1%; margin-top:1%; font-family: FuturaStd Medium;">Áreas registradas en sistema</h6>
+    <div class="row">
+      <div class="col s12 m10"></div>
+        <div class="col s12 m2"> 
+             <!--<a class=" modal-trigger" style=" margin-bottom: 10px;" href="#idModalNewArea">-->
+             <a  style=" margin-bottom: 10px;" href="/administracion/areas/create">
+             <i class="material-icons">add_circle</i>
+              Área
+             </a>
+        </div>
+    </div>  
+    <div class="row">
+      <div class="col s12 m12">
+        <div>
+
+          <table id="DataTableId"  style="width:100%">
+            <thead>
+              <tr>
+                <th scope="col" style="font-family: FuturaStd Medium;">Área</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Descripción</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Estatus</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Acciones</th>
+                <th scope="col" style="font-family: FuturaStd Medium;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @areas.each do |area| %>
+                <tr>
+                  <td style="font-family: FuturaStd Medium;"><%= area.name  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= area.description  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= area.status  %></td>
+                  <td style="font-family: FuturaStd Medium;">
+                    <%= form_with url: "/administracion/areas/active/" + area.id.to_s, method: :post do |form| %>
+
+                      <% if area.status.upcase == 'Activo'.upcase%>
+                        <%= form.submit 'Inactivar', style:'border: none; background:white; color:#B40404; font-family: FuturaStd Medium;'%>
+                      <%else%>
+                        <%= form.submit 'Activar', style:'border: none; background:white; color:#039BE5; font-family: FuturaStd Medium;'%>
+                      <%end%>    
+                    <%end%>  
+                  </td>
+                  <td style="font-family: FuturaStd Medium;">
+                    <!--<a class=" modal-trigger" style=" margin-bottom: 10px;" href="#idModalEditArea" onclick="setDataModalEditArea('<%= area.id %>%<%= area.name %>%<%= area.description  %>')">-->
+                    <a style=" margin-bottom: 10px;" href="/administracion/areas/update/<%= area.id%>">
+                      <i class="material-icons">edit</i>
+                      Editar
+                    </a>
+                  </td>
+                </tr>
+              <% end %>                
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> 
+
+  </div>
+</div>

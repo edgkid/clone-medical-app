@@ -1,0 +1,59 @@
+<div class="row" style="margin-top:5%;">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-header">
+          <h5 style="margin-left:5%; margin-top:5%; font-family: FuturaStd bold;">Usuarios del Sistema</h5>
+            <div class="row">
+                 
+                    <div style="margin-left: 10%; margin-top:5%;">
+
+                        <table id="DataTableId" class="table table-striped table_app_style" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="font-family: FuturaStd bold;">Usuario</th>
+                                    <th scope="col" style="font-family: FuturaStd bold;">Login</th>
+                                    <th scope="col" style="font-family: FuturaStd bold;">Nombre</th>
+                                    <th scope="col" style="font-family: FuturaStd bold;">Sexo</th>
+                                    <th scope="col" style="font-family: FuturaStd bold;">Area</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                                <% @users.each do |user| %>
+                                    <tr>
+                                        <% if user.doctor || user.patient %>
+                                            <td scope="col" style="font-family: FuturaStd Medium;">
+                                                <%= user.user_type %>
+                                                
+                                            </td>
+                                            <td scope="col" style="font-family: FuturaStd Medium;">
+                                                <% if user.login_status.upcase == 'Login'.upcase %>
+                                                    <%= image_tag "active.png", style: 'height:15px; width:15px;' %> 
+                                                <% end %>
+                                            </td>
+                                        <% end %>
+                                        <% if user.doctor %> 
+                                            <td scope="col" style="font-family: FuturaStd Medium;"><%= user.doctor.name.to_s + " " + user.doctor.last_name.to_s %></td>
+                                            <td scope="col" style="font-family: FuturaStd Medium;"><%= user.doctor.gender%></td>
+                                            <td scope="col" style="font-family: FuturaStd Medium;"><%= user.doctor.area.name%></td>
+                                        <% end %>
+                                        <% if user.patient %>
+                                            <td scope="col" style="font-family: FuturaStd Medium;"><%= user.patient.name.to_s + " " + user.patient.last_name.to_s %></td>
+                                            <td scope="col" style="font-family: FuturaStd Medium;"><%= user.patient.gender%></td>
+                                            <td scope="col" style="font-family: FuturaStd Medium;">N/A</td>
+                                        <% end %>
+                                        
+                                    </tr>
+                                <% end %>
+                                
+                            </tbody>
+                        </table>
+
+                    </div>
+
+            </div>
+          
+        </div>
+      </div>
+    </div>     
+</div>

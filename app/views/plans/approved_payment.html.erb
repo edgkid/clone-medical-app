@@ -1,0 +1,112 @@
+<%- if current_user.doctor%>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card"style="margin-top:2%; width:96%; margin-left:2%; margin-right:2%;">
+        <div class="card-header">
+            <h6 style="margin-left:1%; margin-top:1%; font-family: FuturaStd Medium;">Planes adquiridos por pacientes</h6>
+        </div>
+        <div class="card-content">
+          <table  id="DataTableId"  style="width:100%">
+            <thead>
+              <tr>
+                <th scope="col" style="font-family: FuturaStd Medium;">Código</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Estatus</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Plan</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Paciente</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Cedula</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Tipo de Pago</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">#Referencia</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Pagado en</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Fecha de Pago</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @patient_plans.each do |patient_plan| %>
+                  <tr>
+                    <td style="font-family: FuturaStd Medium;"><%= patient_plan.plan.code  %></td>
+                    <td style="font-family: FuturaStd Medium;"><%= patient_plan.status  %></td>
+                    <td style="font-family: FuturaStd Medium;"><%= patient_plan.plan.name  %></td>
+                    <td scope="col" style="font-family: FuturaStd Medium;"><%= patient_plan.patient.name + " " + patient_plan.patient.last_name  %></td>
+                    <td scope="col" style="font-family: FuturaStd Medium;"><%= patient_plan.patient.document  %></td>
+                    <td style="font-family: FuturaStd Medium;">
+                      <% if patient_plan.payment_type != nil  %>
+                          <%= patient_plan.payment_type  %>
+                      <% else %>
+                          N/A
+                      <% end %>
+                    </td>
+                    <td>
+                      <% if patient_plan.reference_number != nil  %>
+                          <%= patient_plan.reference_number  %>
+                      <% else %>
+                          N/A
+                      <% end %>
+                    </td>
+                    <td style="font-family: FuturaStd Medium;"><%= patient_plan.payment_to  %></td>
+                    <td style="font-family: FuturaStd Medium;"><%= patient_plan.created_at.strftime("%d/%m/%Y")  %></td>
+                    <td style="font-family: FuturaStd Medium;">
+
+                      <% if patient_plan.status == "Revision" %>
+                        <a class="modal-trigger" style="color:#039BE5;" href="#idModalPayApproved" onclick="setApprovePayModal('<%= patient_plan.id.to_s + '%' + patient_plan.plan.name + '%' + patient_plan.status + '%Aprobado' %>')">
+                        <i class="material-icons">check</i>
+                        </a>
+                        <a class="modal-trigger" style="color: red;" href="#idModalPayApproved" onclick="setApprovePayModal('<%= patient_plan.id.to_s + '%' + patient_plan.plan.name + '%' + patient_plan.status + '%Rechazado' %>')">
+                          <i class="material-icons">close</i>
+                        </a>
+                      <% else %>
+                        N/A
+                      <% end %>
+
+                    </td>             
+                  </tr>
+                <% end %>
+            </tbody>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <nav style="background: #EE6E73; width: 80%; margin-left: 10%; margin-right: 10%">
+        <div class="nav-wrapper" style="background: #EE6E73;">
+            <p style="text-align:center; color:#039be5; font-family: FuturaStd bold; color: white;"> Cargue su información de perfil antes de continuar.</p>
+        </div>
+  </nav>
+<% end %>
+
+
+
+
+
+<!-- Modal para registrar pago de suscripción  -->
+  <div id="idModalPayApproved" class="modal">
+    <div class="modal-content">
+      <h4 style="font-family: FuturaStd bold" id="titleMessage"></h4>
+      <p id="idMessage" style="font-family: FuturaStd Medium"></p>
+    <div class="modal-footer">
+      <div id ="idFormContent">
+
+              
+      </div>
+    </div>
+  </div>
+
+
+<script>
+  function setApprovePayModal(value) {
+
+    var splitResult = value.split("%");
+    var actionType = (splitResult[3] == 'Aprobado')? 'Aprobar' : 'Rechazar';
+    var titleContent = '<h4 style="font-family: FuturaStd bold" id="titleMessage">' + actionType +' pago</h4>';
+    var messageContent = '<p id="idMessage" style="font-family: FuturaStd Medium">Esta seguro que desea indicar como <b>"' + splitResult[3] + " el pago del plan "+ splitResult[1] + ' con código: ' + splitResult[0] + ',</b> " el cual se encuentra en estatus  "' + splitResult[2] +'"</p> ';
+    var formContent = '<div id ="idFormContent"><form action="/administracion/aprobar-pago/'+ splitResult[0]+'" method="post" accept-charset="UTF-8"><input id="idPlan" name="idPlan" type="text" value="" hidden /><input id="idStatus" name="status" type="text" value="" hidden /><input type="submit" value="Guardar" style="background: #039BE5; color: white; border: none; height: 40px; width:20%; border-radius: 10px;" ></form></div>';
+
+    $("#titleMessage").html(titleContent);
+    $("#idMessage").html(messageContent);
+    $("#idFormContent").html(formContent);
+    $("#idPlan").val(splitResult[0]);
+    $("#idStatus").val(splitResult[3]);
+  }
+</script>
+

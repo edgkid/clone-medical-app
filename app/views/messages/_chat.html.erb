@@ -1,0 +1,149 @@
+
+<%= form_for @message, url: message_path(@chat), remote: true do |f| %>
+    <div 
+        class="col s12 chat-box"
+        style="
+            background: #035bba61;
+            height: calc(100vh - 64px);
+            position: relative;
+            padding: 0;
+        "
+        id="chat-box"
+        data-user="<%= current_user.id %>"
+        data-chat="<%= @chat.id %>"
+
+    >
+        <div 
+            id="messages"
+            style="
+                padding: 20px;
+                display: flow-root;
+                height: calc(100% - 55px);
+                overflow-y: scroll;
+            "
+        >
+            <% @chat.messages.each do |msg| %>
+
+                <div id="msg" style="display: flow-root">
+                    <div 
+                        class="message "
+                        style="
+                            padding: 1px 30px;
+                            margin: 10px 0;
+                            background: white;
+
+                            <%= msg.user_id == current_user.id ? 'text-align: right; float: right; border-radius:  10px 0px 30px 10px;' : 'text-align: left; float: left; border-radius:    0px 10px 10px 30px;' %> 
+
+                            <#%= msg.user == 'patient' && @user == 'patient' ? 'text-align: right; float: right; border-radius:  10px 0px 30px 10px;' : '' %> 
+                            <#%= msg.user == 'doctor' && @user == 'doctor' ? '  text-align: right; float: right; border-radius:  10px 0px 30px 10px;' : '' %>
+                            <#%= msg.user == 'patient' && @user == 'doctor' ? ' text-align: left; float: left; border-radius:    0px 10px 10px 30px;' : '' %> 
+                            <#%= msg.user == 'doctor' && @user == 'patient' ? ' text-align: left; float: left; border-radius:    0px 10px 10px 30px;' : '' %>
+                        "
+                    >
+                        <!-- >
+                            <div class="message-user">
+                                <%= msg.user %>
+                            </div>
+                        -->
+                        <div class="message-content">
+                            <% if msg.content.present? %>
+                                <%= msg.content %>
+                            <% elsif msg.image.present? %>  
+                                <%# <%= image_tag(msg.image.variant(resize: '200x200')) %> 
+                                <%= link_to(image_tag(msg.image, class: 'img-chat responsive-img'), rails_blob_path(msg.image, disposition: "attachment")) %>
+                            <% else %>
+                                Error al mostrar contenido
+                            <% end %>
+                        </div>
+                        <div 
+                            class="message-hour"
+                            style=" color: #9c9a9a;
+                                    font-size: 8pt;
+                            "
+                        >
+                            <span><%= msg.created_at.strftime('%d/%m/%Y %l:%M %P') %></span>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+        
+        
+        <div 
+            class="message-textarea"
+            style="
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                padding: 15px 10px 10px 10px;
+                background: whitesmoke;
+            "
+        >
+            <%= f.hidden_field :user_id, value: current_user.id %>
+
+            <div 
+                class="input-field " 
+                style="
+                    padding: 0; 
+                    width: 100%;
+                    margin: 0;
+                    display: flex;
+                "
+            >
+                <%= f.text_area :content, id: 'messages_content', class: '', placeholder: 'Escribe un mensaje aquí',
+                    style: '
+                        border: none;
+                        background: white;
+                        padding: 15px;
+                        border-radius: 20px;
+                    '
+                %>
+                <button type="submit" id="submit-button" class="waves-effect send-button">
+                    <i class="material-icons">send</i>
+                </button>
+
+                <%= f.file_field :image, accept: "image/png, image/gif, image/jpeg", class: 'attach-field' %>
+
+                <button type="button" id="startcall" class="waves-effect send-button">
+                    <i class="material-icons">phone</i>
+                </button>
+                <button type="button" id="finishcall" class="red-text waves-effect send-button">
+                    <i class="material-icons">call_end</i>
+                </button>
+            </div>
+        </div>
+        
+    </div>
+<% end %>
+
+<div id="initializedCall" class="modal valign-wrapper">
+    <div class="modal-content">
+        <h5 class="green-text center-align">
+            <i class="large material-icons">call</i>
+        </h5>
+
+        <h5 class="center-align"> LLamada iniciada con: 
+            <%= @chat.doctor.id == current_user.try(:doctor).try(:id) ? @chat.patient.full_name : @chat.doctor.full_name %>
+        </h5>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="modal-close waves-effect waves-green btn-flat">OK</button>
+    </div>
+</div>
+
+<div id="incomingCall" class="modal valign-wrapper">
+    <div class="modal-content">
+        <h5 class="green-text center-align">
+            <i class="large material-icons">call</i>
+            <i class="large material-icons">call_received</i>
+        </h5>
+        <h5 class="center-align"> LLamada entrante de: 
+            <%= @chat.doctor.id == current_user.try(:doctor).try(:id) ? @chat.patient.full_name : @chat.doctor.full_name %>
+        </h5>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="" class="modal-close waves-effect red-text waves-red btn-flat">Rechazar</button>
+        <button type="button" id="incomingCallButton" class="modal-close green-text waves-effect waves-green btn-flat">OK</button>
+    </div>
+</div>

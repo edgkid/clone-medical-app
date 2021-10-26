@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Medical</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="manifest" href="/manifest.json">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">          
+  </head>
+
+  <body>
+
+    <style>
+      .style_logo{
+          width: 80px;
+          height: 40px;
+      }
+
+      .textarea_style{
+        border-radius:10px
+      }
+
+      .submit_style{
+        width: 100%;
+        background:#039be5;
+        border: none;
+        color: white;
+        border-radius:5px;
+        height: 40px;
+      
+      }
+
+      @font-face {
+        font-family: "FuturaStd bold";
+        src: url(/assets/FuturaStd-Bold.otf) format("truetype");
+      }
+
+      @font-face {
+        font-family: "FuturaStd Medium";
+        src: url(/assets/FuturaStd-Medium.otf) format("truetype");
+      }
+
+      li {
+         font-family: "FuturaStd Medium";
+      }
+
+      th, td{
+
+        padding: 5px 5px;
+        display: table-cell;
+        text-align: left;
+        vertical-align: middle;
+        border-radius: 2px;
+
+      }
+
+      .card-header{
+        padding: 2px;
+        border-radius: 0 0 2px 2px;
+        font-family: FuturaStd bold;"
+      }
+
+      .table_app_style{
+        width:90%;
+        margin-left:-5%;
+
+      }
+
+    </style>
+
+    <%- if user_signed_in? %>
+
+      <nav>
+        <div class="nav-wrapper" style="background: #2196f3;">
+          <a href="#" class="brand-logo">IDET</a>
+          <span href="#" style="position: absolute; z-index: 100; cursor: pointer;" data-target="slide-out" class="sidenav-trigger">
+                <i class="material-icons" style="font-size: 38px; position: fixed; color: slategray;color:white; margin-top:10px; order-radius: 0 10px;">
+                  menu
+                </i>
+          </span>
+        </div>
+      </nav>
+
+      
+      <%= render partial: 'menu/patient' %>
+      <main>        
+        <%= yield %>
+      </main>
+
+    <% else %>
+      <%= yield %>
+    <% end %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+          // const M = window.M
+          // const sidenav = $('.sidenav');
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {});
+          // var instance = M.Sidenav.getInstance(elems[0]);
+          // instance.isFixed = true
+          // instance.open()
+          // $('.side-nav-trigger').css('padding-left', '300px')
+
+          // $('.side-nav-trigger').click(() => {
+          //   // var elems = document.querySelectorAll('.sidenav');
+          //   // console.log(elems[0])
+          //   // var instances = M.Sidenav.getInstance(elems[0]);
+          //   if(instance.isOpen){
+          //     instance.isFixed = false  
+          //     instance.close()
+          //     $('.side-nav-trigger').css('padding-left', '0')
+          //   }else{
+          //     instance.isFixed = true  
+          //     instance.open()
+          //     $('.side-nav-trigger').css('padding-left', '300px')
+
+          //   }
+          // })
+          
+        });
+      </script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+          $('select').formSelect();
+      });
+    </script>
+
+    <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              var elems = document.querySelectorAll('.modal');
+              var instances = M.Modal.init(elems);
+            });          
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <%= wicked_pdf_stylesheet_link_tag 'reports_prescription' %>
+  </head>
+  <body>
+
+    <style>
+
+        tr th {
+            text-align: left;
+        }
+        tr td {
+            text-align: left;
+        }
+    </style>
+    
+    <div id="header">
+        <table id="DataTableId" style="width:100%; border-bottom: 1px solid black">
+            <tr>
+                <td style="width:250px;">
+                    <%= image_tag wicked_pdf_asset_base64('logo.png'), options = { :width => 150, :height => 100} %>
+                </td>
+                <td>
+                    <p style="width:100%; margin-top:-5px;"><strong style="margin-left:89%">Telemed</strong></p>
+                    <p style="width:100%; margin-top:5%;"><h3 style="margin-left:40%;">GERENCIA ADMINISTRATIVA DE SALUD</h3></p>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    <div id="content">
+
+        <div style=" width:100%; border-bottom: 1px solid black;">
+            <p style="width:100%; text-align:center;"><h3 style="text-align:center;">PARACLINICOS</h3></p>
+        </div>
+        <div style=" width:100%; border-bottom: 1px solid black;">
+            <p style="width:100%;"><h3>IDENTIFICACION DEL PACIENTE</h3></p>
+            <table style="width:100%;">
+                <tr>
+                    <td style="width:70%;">
+                        NOMBRE:  <%= @para_clinical[0].appointment.patient.name + "" + @para_clinical[0].appointment.patient.last_name %>
+                    </td>
+                    <td style="width:15%;">
+                        EDAD:
+                        <% if @para_clinical[0].appointment.patient.birthday %>
+                            <%= Date.today.year - @para_clinical[0].appointment.patient.birthday.year %>
+                        <% else %>
+                            0
+                        <% end %>
+                    </td>
+                    <td style="width:15%;">
+                        SEXO: <%= @para_clinical[0].appointment.patient.gender%>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <p><%= @para_clinical[0].info%></p>
+        
+    </div>
+    <div id="Footer" style="margin-top: 90%; border-bottom: 1px solid black; border-top: 1px solid black;">
+        <table style="width:100%; border-bottom: 1px solid black;">
+            <tr>
+                <td style="width:70%;"> 
+                    <strong>MEDICO TRATANTE: </strong>
+                    <%= @para_clinical[0].appointment.doctor.name + " " + @para_clinical[0].appointment.doctor.last_name %>   
+                </td>
+                <td style="width:30%;">
+                    <strong>FECHA: </strong>
+                    <%= @para_clinical[0].appointment.created_at.strftime("%d/%m/%Y")%>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:70%;"> 
+                    <strong>ESPECIALIDAD: </strong>
+                    <%= @para_clinical[0].appointment.doctor.specialty%>
+                </td>
+                <td style="width:30%;"></td>
+            </tr>
+            <tr>
+                <td style="width:70%;">
+                    Firma médico tratante:
+                </td>
+                <td style="width:30%;">
+                    <% if @para_clinical[0].appointment.doctor.firm != nil %>
+                        <img src="<%= @para_clinical[0].appointment.doctor.firm %>" style="width: 100px; height: 50px; margin-top: 25px; margin-left: 0px;" />
+                    <% end %>
+                </td>
+            </tr>
+        </table>
+    </div>
+  </body>	
+</html>	

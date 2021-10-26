@@ -1,0 +1,77 @@
+
+<div style="width:90%; margin-left:5%; margin-rigth:5%">
+    <%= form_with model: @report, url: '/new-report-by-Appointment', method: :post do |form| %>
+        <%= csrf_meta_tags %>
+
+        <%= form.text_field :doctor_id, value: @chat.doctor_id, hidden: true %>
+        <%= form.text_field :patient_id, value: @chat.patient_id, hidden: true %>
+
+        
+
+        <div class="row">
+            <div class="col s12 m12">
+                <fieldset class="field-set-style" id="group_name" style="padding: 0px;">
+                    <legend class="legend-style" style="margin-left:2%;">Motivo de Consulta</legend>
+                    <%= form.text_area :reason, size: "60x30", class: 'textarea_style', placeholder: 'Descripción del mótivo de la consulta......', style:"border:none;" %>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <fieldset class="field-set-style" id="group_name" style="padding: 0px;">
+                    <legend class="legend-style" style="margin-left:2%;">Posible Enfermedad</legend>
+                    <%= form.text_area :disease, size: "60x30", class: 'textarea_style', placeholder: 'Descripcipción de posible enfermedad.....', style:"border:none;" %>
+                </fieldset>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col s12 m12">
+                <fieldset class="field-set-style" id="group_name" style="padding: 0px;">
+                    <legend class="legend-style" style="margin-left:2%;">Antecendetes del Paciente</legend>
+                    <%= form.text_area :past, size: "60x30", class: 'textarea_style', placeholder: 'Describa los antecedentes del paciente.....', style:"border:none;" %>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <fieldset class="field-set-style" id="group_name" style="padding: 0px;">
+                    <legend class="legend-style" style="margin-left:2%;">Examenes Clínicos</legend>
+                    <%= form.text_area :exam, size: "60x30", class: 'textarea_style', placeholder: 'Descripción de examenes clínicos.....', style:"border:none;" %>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <fieldset class="field-set-style" id="group_name" style="padding: 0px;">
+                    <legend class="legend-style" style="margin-left:2%;">Diagnóstico</legend>                        
+                        <% @diseases = Disease.all%>
+                        <select class="select-2-multiple" name="diagnostic[]" multiple="multiple" style="border:none;" id = "diagnostic">
+                            <% @diseases.each do |disease|%>
+                                <option value="<%= disease.diagnostic_code + " - " + disease.diagnostic_des %>"><%= disease.diagnostic_code + " - " + disease.diagnostic_des %></option>
+                            <% end %>
+                        </select>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <fieldset class="field-set-style" id="group_name" style="padding: 0px;">
+                    <legend class="legend-style" style="margin-left:2%;">Tratamiento Propuesto</legend>
+                      <%= form.text_area :prescription, size: "60x20", class: 'textarea_style', placeholder: 'Descripción de tratamiento propuesto.....', style:"border:none;" %>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col s12 m4">
+                <%= form.submit 'Guardar', class: 'submit_style close-call'%>
+            </div>
+        </div>
+
+    <% end %>
+</div>

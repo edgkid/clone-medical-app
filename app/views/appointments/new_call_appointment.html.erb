@@ -1,0 +1,54 @@
+<div class="card" style="width: 96%; margin-left:2%; margin-right:2%; margin-top:2%;">
+    <div class="card-content">
+        <h6 style="margin-left:2%; font-family: FuturaStd Medium;">Nuevo Consulta teléfonica</h6>
+        <div class="row" style="width: 96%; margin-left:2%; margin-right:2%;">
+            <div class="col s12 m6">
+                <p><b>Paciente: </b><%= @patient.name + " "+ @patient.last_name%> </p>
+                <p><b>Documento: </b><%= @patient.document%></p>
+                <p><b>Edad: </b>
+                    <% if @patient.birthday %>
+                        <%= Date.today.year - @patient.birthday.year %>
+                    <% else %>
+                        0
+                    <% end %>
+                </p>
+            </div>
+            <div class="col s12 m6">
+                <p><b>Médico Tratante: </b><%= @doctor.name + " "+ @doctor.last_name%> </p>
+                <p><b>Docuemnto: </b><%= @doctor.document%></p>
+                <p><b>Área: </b><%= @doctor.area.name%></p>
+            </div>
+        </div>
+        <div class="row" >
+             <div class="col s12 m12"style="padding: 0;">
+                <p><h5 style="text-align:center; color:Black; font-family: FuturaStd Medium; margin-top:5%;">Historia médica</h5></p>  
+                        
+                <%- if @appointment.length > 0 && @appointment[0].report != nil %>
+                    <%= render 'reports/edit_report_from_call', object: {chat: @chat, plan: @patient_plan}%>
+                <%- else %>
+                    <%= render 'reports/new_report_from_call', object: {chat: @chat, plan: @patient_plan}%>
+                <%- end  %>
+
+            </div>
+         </div>
+         <div class="row" style="width:90%; margin-left:5%; margin-rigth:5%" >
+            <div class="col s12 m12"style="padding: 0;">
+                <%- if @appointment.length > 0 && @appointment[0].prescription != nil %>
+                    <%= render 'reports/edit_prescription_from_call', object: {chat: @chat, plan: @patient_plan} %>
+                <%- else %>
+                    <%= render 'reports/new_prescription_from_call', object: {chat: @chat, plan: @patient_plan} %>
+                <%- end  %>
+            </div>
+         </div>
+         <div class="row" style="width:90%; margin-left:5%; margin-rigth:5%">
+            <div class="col s12 m12"style="padding: 0;">
+                <%- if @appointment.length > 0 && @appointment[0].clinical_document != nil %>
+                    <%= render 'reports/edit_document_clinical_from_call', object: {chat: @chat, plan: @patient_plan} %>
+                <%- else %>
+                    <%= render 'reports/new_document_clinical_from_call', object: {chat: @chat, plan: @patient_plan} %>
+                <%- end  %>
+                <%= render 'reports/close_call', object: @chat%>
+            </div>
+         </div>
+    </div>
+</div>

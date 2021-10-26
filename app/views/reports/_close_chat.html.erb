@@ -1,0 +1,27 @@
+<div class="row" style="margin-top:10%;">
+    <div class="col s12 m12">
+        <a class="btn modal-trigger submit_style btn close-call" style="background:#f94181; margin-bottom: 10px;" href="#idModalCloseAppointment">Cerrar consulta</a>
+    </div>
+</div>
+<div id="idModalCloseAppointment" class="modal">
+    <div class="modal-content">
+      <h6 style="font-family: FuturaStd bold">Advertencia</h6>
+      <p style="font-family: FuturaStd Medium; text-align: center;">
+        ¿Realmente desea cerrar la consulta?. Se le descontará al paciente una consulta de sun plan contratado.
+      </p>
+      <%= form_with model: @patient_plan, url: "/appointment-by-phone/chat", method: :post do |f| %>
+        
+            <div id="id_inputs">
+                <input id="patient_id" name="patient_id" type="text" value="<%= @chat.patient_id %>" hidden/>
+                <input id="doctor_id" name="doctor_id" type="text" value="<%= @chat.doctor_id %>" hidden/>
+                
+                <div class="row" style="margin-top:2%;">
+                    <div class="col s12 m9"></div>
+                    <div class="col s12 m3">
+                        <input type="submit" name="Aceptar" value="Cerrar Consulta" style="whidth: 100%; height: 40px; border:none; border-radius: 5px; color: white; background: #F94181;"/>
+                    </div>
+            </div>
+        <% end %>
+    </div>
+
+</div>

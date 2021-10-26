@@ -1,0 +1,57 @@
+<%- if current_user.doctor? %>
+
+    <% @appointment = Appointment.where("to_char(created_at, 'dd-MM-yy') = ? AND doctor_id = ? AND patient_id = ?", Date.today.strftime("%d-%m-%y"), @chat.doctor_id, @chat.patient_id).order(created_at: :desc)%>
+
+    <div class="row" style="height: calc(100vh - 64px);margin: 0;">
+        <div class="col s12 m6"style="padding: 0;"id="chat" data-user="<%= @user %>">
+            <%= render 'chat'%>
+        </div>
+        <div class="col s12 m6"style="padding: 0;">
+            <div class="col s12 m12"style="padding: 0;">
+                <p><h5 style="text-align:center; color:Black; font-family: FuturaStd Medium; margin-top:5%;">Historia médica</h5></p>  
+                <%- if @appointment.length > 0 && @appointment[0].report != nil %>
+                    <%= render 'reports/edit_report', object: @chat%>
+                <%- else %>
+                    <%= render 'reports/new_report', object: @chat%>
+                <%- end  %>
+                
+            </div>            
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col s12 m6">
+            <div class="col s12 m12">
+
+                <%- if @appointment.length > 0 && @appointment[0].prescription != nil %>
+                    <%= render 'reports/edit_prescription', object: @chat%>
+                <%- else %>
+                    <%= render 'reports/new_prescription', object: @chat%>
+                <%- end  %>
+
+                
+            </div>            
+        </div>
+        <div class="col s12 m6">
+            <div class="col s12 m12">
+                <%- if @appointment.length > 0 && @appointment[0].clinical_document != nil %>
+                    <%= render 'reports/edit_document_clinical', object: @chat%>
+                <%- else %>
+                    <%= render 'reports/new_document_clinical', object: @chat%>
+                <%- end  %>
+                <%= render 'reports/close_chat'%>
+            </div>            
+        </div>
+    </div>
+    
+<%end%>
+
+<%- if current_user.patient? %>
+
+    <div class="row" style="height: calc(100vh);margin: 0;">
+        <div class="col s12 m12"style="padding: 0;"id="chat" data-user="<%= @user %>">
+            <%= render 'chat'%>
+        </div>
+    </div>
+
+<%end%>
+

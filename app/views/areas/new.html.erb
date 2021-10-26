@@ -1,0 +1,46 @@
+<div class="card" style="width: 60%; margin-left:20%; margin-right:20%; margin-top:10%;">
+    <div class="card-header">
+        <h6 style="margin-left:2%; font-family: FuturaStd Medium;">Nuevo registro de área</h6>
+        <div class="row">
+            <div class="col s12 m12">
+                <%= form_with model: @area, url: administracion_areas_new_path, id: "formulario" do |form| %>
+                    <%= csrf_meta_tags %>
+
+                    <div class="row">                     
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id= "group_name" >
+                                <legend class="legend-style">Área</legend>
+                                <%= form.text_field :name, maxlength: 40,placeholder: 'Nombre de nueva área', style:"height: 100%; padding:none; border-bottom: none;"%>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">                     
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id= "group_description">
+                                <legend class="legend-style">Descripción de área</legend>
+                                <%= form.text_area :description, maxlength: 100, placeholder: 'Descripción de nueva área.....', style:"padding:none; border: none;" %>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">                     
+                        
+                        <div class="col s12 m6"></div>
+                        <div class="col s12 m3">
+                            <a href="/administracion/areas" class="btn" style="background:#E5E5E5; color: black; margin-bottom: 10px; border 1px solid black; width: 100%; font-family: FuturaStd Medium;">
+                                    Volver
+                            </a>
+                        </div>
+                        <div class="col s12 m3">
+                            <%= form.submit 'Guardar', class:"btn", style:"color: white; width: 100%; text-aling:center; background:#2196F3; border:none; border-radius: 5px; height: 40px;"%>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

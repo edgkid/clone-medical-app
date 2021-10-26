@@ -1,0 +1,122 @@
+<ul class="collapsible" style="width:98%; margin-left:1%; margin-right:1%;"> 
+    <li>
+      <div class="collapsible-header">
+        <i class="material-icons">perm_identity</i>
+            <p style="font-family: FuturaStd Medium; padding:0px;">Datos de perfil</p>
+        </div>
+      <div class="collapsible-body">
+        <div class="row">
+            <div class="col s12 m12">
+                <div style="width:90%; margin-left:5%; margin-right:5%;">
+                    <%= form_with url: "perfilP/edit/" + @user.patient.id.to_s, method: :post, id: 'formulario' do |form| %>
+                        <%= csrf_meta_tags %>
+
+                        <%= form.text_field :id, value: @user.patient.id, hidden: true %>
+                        
+                         <div class="row">
+                            <div class="col s12 m6">
+                                <fieldset class="field-set-style" id ="group_name">
+                                    <legend class="legend-style">Primer nombre</legend>
+                                    <%= form.text_field :name, value: @user.patient.name, style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m6">
+                                <fieldset class="field-set-style" id ="group_middle_name">
+                                    <legend class="legend-style">Segundo nombre</legend>
+                                    <%= form.text_field :middle_name, value: @user.patient.middle_name, style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <fieldset class="field-set-style" id ="group_last_name">
+                                    <legend class="legend-style">Primer apellido</legend>
+                                    <%= form.text_field :last_name, value: @user.patient.last_name, style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m6" >
+                                <fieldset class="field-set-style" id ="group_surname">
+                                    <legend class="legend-style">Segundo apellido</legend>
+                                    <%= form.text_field :surname, value: @user.patient.surname, style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m5">
+                                <fieldset class="field-set-style" id="group_document">
+                                    <legend class="legend-style">Cédula</legend>
+                                    <%= form.text_field :document, value: @user.patient.document, style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m5">
+                                <fieldset class="field-set-style" id ="group_phone">
+                                    <legend class="legend-style">Teléfono</legend>
+                                    <%= form.text_field :phone, value: @user.patient.phone, style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m2">
+                                <fieldset class="field-set-style">
+                                    <legend class="legend-style">Sexo</legend>
+                                    <%= select_tag "gender", options_for_select([ "M", "F" ], @user.patient.gender), {style:"height: 100%; padding:none; border-bottom: none;"}%>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m5">
+                                <fieldset class="field-set-style">
+                                    <legend class="legend-style">Correo electrónico</legend>
+                                    <%= form.email_field :mail, value: @user.patient.mail, disabled: true, style:"height: 100%; padding:none; border-bottom: none;"  %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m5">
+                                <fieldset class="field-set-style">
+                                    <legend class="legend-style">Fecha de nacimiento</legend>
+                                    <%= form.date_field :birthday, value: @user.patient.birthday, style:"height: 100%; padding:none; border-bottom: none;"  %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m2">
+                                <fieldset class="field-set-style">
+                                    <legend class="legend-style">Edad</legend>
+                                    <% if @user.patient.birthday %>
+                                        <%= form.text_field :years, value:  Date.today.year - @user.patient.birthday.year, disabled: true, style:"height: 100%; padding:none; border-bottom: none;"  %>
+                                    <% else %>
+                                        0
+                                    <% end %>
+                                </fieldset>
+                            </div>
+    
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m3">
+                                <fieldset class="field-set-style">
+                                    <legend class="legend-style">Estado civil</legend>
+                                    <%= select_tag "marital_status", options_for_select([ "Solter@", "casad@", "Divorsiad@" ,"Viud@" ], @user.patient.marital_status), style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m9">
+                                <fieldset class="field-set-style" id="group_address">
+                                    <legend class="legend-style">Dirección</legend>
+                                    <%= form.text_field :address, value: @user.patient.address, style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+    
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m10"></div>
+                            <div class="col s12 m2">
+                                <%= form.submit 'Guardar', class: 'submit_style'%>
+                            </div>
+    
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+      </div>
+    </li>
+</ul>

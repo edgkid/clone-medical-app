@@ -1,0 +1,66 @@
+<div class="card" style="width: 96%; margin-left:2%; margin-right:2%; margin-top:2%;">
+    <div class="card-content">
+        <h6 style="margin-left:2%; font-family: FuturaStd Medium;">Nuevo registro de área</h6>
+        <div class="row">
+            <div class="col s12 m12">
+                <table  id="DataTableId"  style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="font-family: FuturaStd bold">Paciente</th>
+                            <th scope="col" style="font-family: FuturaStd bold">Cédula</th>
+                            <th scope="col" style="font-family: FuturaStd bold">Plan</th>
+                            <th scope="col" style="font-family: FuturaStd bold">Tipo de Plan</th>
+                            <th scope="col" style="font-family: FuturaStd bold">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @patient_with_plan.each do |patient_by_active_plan| %>
+                            <tr>
+                                <td><%= patient_by_active_plan.patient.name + " " + patient_by_active_plan.patient.last_name %></td>
+                                <td><%= patient_by_active_plan.patient.document %></td>
+                                <td><%= patient_by_active_plan.plan.name %></td>
+                                <td><%= patient_by_active_plan.type_plan %></td>
+                                <td>
+                                    <a class="modal-trigger" style="color:#039BE5;" href="#idModalAlertaDeCosumo" onclick="setSelectPlan('<%= patient_by_active_plan.patient_id.to_s + '%' + current_user.doctor.id.to_s  + '%' + patient_by_active_plan.id.to_s + '%' + patient_by_active_plan.type_plan %>')">Iniciar Consulta</a>                                
+                                </td>
+                            </tr>
+                        <%end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para advertir de decuento de cita sobre plan -->
+<div id="idModalAlertaDeCosumo" class="modal">
+    <div class="modal-content">
+      <h6 style="font-family: FuturaStd bold"> Advertencia</h6>
+      <p id="id_message" style="font-family: FuturaStd Medium"></p>
+        <%= form_with model: @patient_plan, url: "/appointment-by-phone", method: :post do |f| %>
+        
+            <div id="id_inputs">
+                <input id="patient_id" name="patient_id" type="text" value=""/>
+                <input id="doctor_id" name="doctor_id" type="text" value=""/>
+                <input id="patient_plan_id" name="patient_plan_id" type="text" value=""/>
+                <input type="submit" name="Aceptar" value=""/>
+            </div>
+            
+            
+        <% end %>    
+    </div>
+</div>
+
+<script>
+  function setSelectPlan(value) {
+    var splitResult = value.split("%");
+    var inputshtml = '';
+    var messagehtml = '';
+
+    inputshtml= '<div id="id_inputs"><input id="patient_id" name="patient_id" type="text" value="'+ splitResult[0] +'" hidden/><input id="doctor_id" name="doctor_id" type="text" value="'+ splitResult[1] +'" hidden /><input id="patient_plan_id" name="patient_plan_id" type="text" value="'+ splitResult[2] +'" hidden ><input type="submit"  value="Aceptar" style="background: #039BE5; color:white; height: 40px; width:20%; border:none; border-radius: 10px;"/></div>';
+    messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium;"> Esta seguro que desea utilizar el plan <b>"' + splitResult[3].toLowerCase() +'"</b> del paciente para la consulta.</p>';
+
+    $("#id_inputs").html(inputshtml);
+    $("#id_message").html(messagehtml);  
+  }
+</script>

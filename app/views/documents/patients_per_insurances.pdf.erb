@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <%= wicked_pdf_stylesheet_link_tag 'reports_prescription' %>
+  </head>
+  <body>
+  <style>
+
+      tr th {
+        text-align: left;
+      }
+      tr td {
+        text-align: left;
+      }
+  </style>
+    
+    <div id="header">
+        <table id="DataTableId" style="width:100%; border-bottom: 1px solid black">
+            <tr>
+                <td style="width:250px;">
+                    <%= image_tag wicked_pdf_asset_base64('logo.png'), options = { :width => 150, :height => 100} %>
+                </td>
+                <td>
+                    <p style="width:100%; margin-top:-5px;"><strong style="margin-left:89%">Telemed</strong></p>
+                    <p style="width:100%; margin-top:5%;"><h3 style="margin-left:40%;">GERENCIA ADMINISTRATIVA DE SALUD</h3></p>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    <div id="content">
+      <div style="width: 100% height: 30px; border-top: 1px solid black; border-bottom: 1px solid black; text-align: center; font-family: FuturaStd bold; background: #C8C8C8;">
+        <p>Estadistica de Pacientes por Compañia de Seguro</p>
+      </div>
+      <table style="width:100%;">
+          <thead>
+            <tr style="border: 1px solid black;">
+              <th style="font-family: FuturaStd Medium; width:20%;">Fecha de Contrato</th>
+              <th style="font-family: FuturaStd Medium; width:30%;">Paciente</th>
+              <th style="font-family: FuturaStd Medium; width:25%;">Seguro</th>
+              <th style="font-family: FuturaStd Medium; width:25%;">Compañia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @insurances.each do |insurance|%>
+              <% insurance.insured_patients.each do |insured_patient|%>
+                <tr>
+                  <td scope="col" style="font-family: FuturaStd Medium; width:20%;"><%= insured_patient.created_at.strftime("%d/%m/%Y")  %></td>
+                  <td scope="col" style="font-family: FuturaStd Medium; width:30%;"><%= insured_patient.patient.name + " " + insured_patient.patient.last_name  %></td>
+                  <td scope="col" style="font-family: FuturaStd Medium; width:25%;" ><%= insured_patient.insurance.name  %></td>                          
+                  <td scope="col" style="font-family: FuturaStd Medium; width:25%;"><%= insured_patient.company.name  %></td>
+                </tr>
+              <%end %>
+            <%end %>
+          </tbody>
+        </table>
+    </div>
+
+    <div id="footer">
+        
+    </div>
+  </body>	
+</html>	

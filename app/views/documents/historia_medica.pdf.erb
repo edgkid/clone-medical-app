@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <%= wicked_pdf_stylesheet_link_tag 'reports_prescription' %>
+  </head>
+  <body>
+    
+    <div id="header">
+        <table id="DataTableId" style="width:100%; border-bottom: 1px solid black">
+            <tr>
+                <td style="width:250px;">
+                    <%= image_tag wicked_pdf_asset_base64('logo.png'), options = { :width => 150, :height => 100} %>
+                </td>
+                <td>
+                    <p style="width:100%; margin-top:-5px;"><strong style="margin-left:89%">Telemed</strong></p>
+                    <p style="width:100%; margin-top:5%;"><h3 style="margin-left:40%;">GERENCIA ADMINISTRATIVA DE SALUD</h3></p>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    <div id="content">
+
+        <div style=" width:100%; border-bottom: 1px solid black;">
+            <p style="width:100%; text-align:center;"><h3 style="text-align:center;">INFORME MEDICO</h3></p>
+        </div>
+        <div style=" width:100%; border-bottom: 1px solid black;">
+            <p style="width:100%;"><h3>IDENTIFICACION DEL PACIENTE</h3></p>
+            <table id="DataTableId" style="width:100%;">
+                <tr>
+                    <td style="width:70%;">
+                    NOMBRE: <%= @report.appointment.patient.name + " " + @report.appointment.patient.last_name  %>
+                    </td>
+                    <td style="width:15%;">
+                        
+                        <% if @report.appointment.patient.birthday %>
+                            EDAD: <%= Date.today.year - @report.appointment.patient.birthday.year %>
+                        <% else %>
+                             EDAD: 0
+                        <% end %>
+                    </td>
+                    <td style="width:15%;">
+                        SEXO: <%= @report.appointment.patient.gender  %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style=" width:100%;  border-bottom: 1px solid black;">
+            <p style="width:100%;"><h3>MOTIVO DE CONSULTA:</h3></p>
+            <p style="width:100%;"><h5><%= @report.reason  %></h5></p>
+        </div>
+
+        <div style=" width:100%;  border-bottom: 1px solid black;">
+            <p style="width:100%;"><h3>ENFERMEDAD ACTUAL:</h3></p>
+            <p style="width:100%;"><h5><%= @report.disease  %></h5></p>
+        </div>
+
+        <div style=" width:100%; border-bottom: 1px solid black;">
+
+            <p style="width:100%;"><h3>ANTECEDENTES PERSONALES:</h3></p>
+            <p style="width:100%;"><h5><%= @report.past  %></h5></p>
+            
+            <br><br>
+            <p style="width:100%;"><h3>EXAMENES CLINICOS:</h3></p>
+            <p style="width:100%;"><h5><%= @report.exam  %></h5></p>
+        </div>
+
+        <div style=" width:100%; border-bottom: 1px solid black;">
+            <p style="width:100%; margin-top:10%"><h3>IMPRENSION DIAGNOSTICA:</h3></p>
+            <p style="width:100%;"><h5><%= @report.diagnostic %></h5></p>
+            <p style="width:100%;"><h3>TRATAMIENTO PROPUESTO:</h3></p>
+        </div>
+
+        <div style=" width:100%; height: 200px; border-bottom: 1px solid black;">        
+            <p style="width:100%;"><h5><%= @report.use %></h5></p>
+        </div>
+
+    </div>
+
+    <div id="content">
+        <table id="DataTableId" style="width:100%; border-bottom: 1px solid black;">
+            <tr>
+                <td style="width:70%;"> 
+                    <strong>MEDICO TRATANTE: <%= @report.appointment.doctor.name + " " +  @report.appointment.doctor.last_name %> </strong>   
+                </td>
+                <td style="width:30%;">
+                    <strong>FECHA: <%= @report.appointment.created_at.strftime("%d-%m-%Y")  %> </strong>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:70%;"> 
+                    <strong>ESPECIALIDAD: <%= @report.appointment.doctor.specialty  %> </strong>
+                </td>
+                <td style="width:30%;">
+
+                </td>
+            </tr>
+            <tr>
+                <td style="width:40%;"> 
+                    <p style="width:100%;">Certifico la veracidad de este información</p>
+                </td>
+                <td style="width:30%;">
+                    Firma médico tratante:
+                </td>
+                <td style="width:30%;">
+                    <% if @report.appointment.doctor.firm != nil %>
+                        <img src="<%= @report.appointment.doctor.firm %>" style="width: 100px; height: 50px; margin-top: 25px; margin-left: 0px;" />
+                    <% end %>
+                </td>
+            </tr>
+        </table>
+    </div>
+  </body>	
+</html>	

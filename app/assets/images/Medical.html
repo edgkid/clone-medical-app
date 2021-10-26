@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://127.0.0.1:3000/appointments -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    
+
+    
+    
+    
+    
+
+    <link rel="stylesheet" media="all" href="./Medical_files/application.debug-bbc4f3a5d1ab30d1788bf3d6c24cf39bf29da49426084d107f8a8f98e69b925d.css" data-turbolinks-track="reload">
+    <script src="./Medical_files/application-566e5a631a77838d2070.js" data-turbolinks-track="reload"></script>
+
+     <link rel="stylesheet" href="./Medical_files/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="./Medical_files/icon" rel="stylesheet">
+      
+    <!-- Compiled and minified CSS -->
+              
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+          });          
+    </script><link rel="stylesheet" type="text/css" href="./Medical_files/includes.css"><script async="" type="text/javascript" src="./Medical_files/vendor.js"></script><title>Medical</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="Y97kPwerSs2EpYTswOyF86rbTVD3JMY0fWL1DIW4QpBJMaRSBYVUax_jE3SHv0LuMiHqxu3N4bknRNlfZFJCEA"><link rel="manifest" href="http://127.0.0.1:3000/manifest.json"><meta name="theme-color" content="#0259b8"><link rel="apple-touch-icon" href="http://127.0.0.1:3000/logo.jpeg"><link rel="stylesheet" href="./Medical_files/materialize.min.css"><link rel="stylesheet" type="text/css" href="./Medical_files/includes.css"><script async="" type="text/javascript" src="./Medical_files/vendor.js"></script></head>
+
+  
+
+  <body>
+    <style>
+      .style_logo{
+          width: 80px;
+          height: 40px;
+      }
+
+      .textarea_style{
+        border-radius:10px
+      }
+
+      .submit_style{
+        width: 100%;
+        background:#039be5;
+        border: none;
+        color: white;
+        border-radius:5px;
+        height: 40px;
+      
+      }
+
+      @font-face {
+        font-family: "FuturaStd bold";
+        src: url(/assets/FuturaStd-Bold.otf) format("truetype");
+      }
+
+      @font-face {
+        font-family: "FuturaStd Medium";
+        src: url(/assets/FuturaStd-Medium.otf) format("truetype");
+      }
+
+      li {
+         font-family: "FuturaStd Medium";
+      }
+
+    </style>
+
+    
+
+
+      <nav>
+        <div class="nav-wrapper">
+          <a href="http://127.0.0.1:3000/appointments#" class="brand-logo">IDET</a>
+          <span href="#" style="position: absolute; z-index: 100; cursor: pointer;" data-target="slide-out" class="sidenav-trigger">
+                <i class="material-icons" style="font-size: 38px; position: fixed; color: slategray;color:white; margin-top:10px; order-radius: 0 10px;">
+                  menu
+                </i>
+          </span>
+        </div>
+      </nav>
+
+      <ul id="slide-out" class="sidenav sidenav-fixed" style="transform: translateX(-105%);">
+        <li>  
+          <div class="user-view">
+                <div class="">
+                    
+                  <a href="http://127.0.0.1:3000/" class="brand-logo">
+                    <img class="style_logo" src="./Medical_files/logo-663d85534b917d41da3e0646ccb44ff7d6899771bd6a6f553393659496358e46.jpg">            
+                  </a>
+
+                </div>
+                <span class=" grey-text name">
+                    <p style="font-family: FuturaStd bold">Médico</p>  
+                </span>
+                <span class=" grey-text email" style="font-family: FuturaStd bold"> medico@prueba.com</span>
+            </div>
+        </li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a href="http://127.0.0.1:3000/">Inicio</a></li>
+        
+
+          <li><a href="http://127.0.0.1:3000/perfilM">Perfil</a></li>
+
+
+          
+
+
+          <li><a href="http://127.0.0.1:3000/suscriptions">Suscripciones</a></li>
+          <li><a href="http://127.0.0.1:3000/chats">Consulta</a></li>
+            <li><a href="http://127.0.0.1:3000/appointments">Historia Clínica</a></li>
+            <li><a href="http://127.0.0.1:3000/appointments#">Firma y sello</a></li>
+
+        <li style="margin-top:10%;">
+          <a style="font-family: FuturaStd bold;" rel="nofollow" data-method="delete" href="http://127.0.0.1:3000/users/sign_out">salir</a>
+        </li>
+        
+      </ul>
+
+      <main>        
+        
+
+<div style="width:90%; margin-left:5%; margin-right: 5%; margin-top:10%">
+
+    <table  id="DataTableId" class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" style="font-family: FuturaStd bold;">Fecha de consulta</th>
+                <th scope="col" style="font-family: FuturaStd bold;">Paciente</th>
+                <th scope="col" style="font-family: FuturaStd bold;">Cédula o pasaporte</th>
+                <th scope="col" style="font-family: FuturaStd bold;">Detalle</th>
+                <th scope="col" style="font-family: FuturaStd bold;">Informe</th>
+                <th scope="col" style="font-family: FuturaStd bold;">Récipe</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td style="font-family: FuturaStd Medium; padding:0px;">02-08-2021 07:30</td>
+                    <td style="font-family: FuturaStd Medium;">Adira Quintero</td>
+                    <td style="font-family: FuturaStd Medium;">20097258</td>
+                        <td>
+                            <button class="btn" style="background: #039BE5;" disabled=""> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                                </svg>
+                            </button>
+                        </td>
+                    
+                        <td>
+                            <button class="btn" style="background:#CB3234" disabled="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"></path>
+                                    <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path>
+                                </svg> 
+                            </button>
+                        </td>
+            
+                        <td>
+                            <button class="btn" style="background:#CB3234" disabled="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"></path>
+                                    <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path>
+                                </svg>
+                            </button>
+                        </td>
+                    
+                </tr>
+            
+        </tbody>
+    </table>
+
+</div>
+      </main>
+
+    
+    
+    
+
+    
+
+    
+
+    <script src="./Medical_files/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="./Medical_files/materialize.min.js"></script>
+    
+
+      <script>
+        $(document).ready(function(){
+          // const M = window.M
+          // const sidenav = $('.sidenav');
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {});
+          // var instance = M.Sidenav.getInstance(elems[0]);
+          // instance.isFixed = true
+          // instance.open()
+          // $('.side-nav-trigger').css('padding-left', '300px')
+
+          // $('.side-nav-trigger').click(() => {
+          //   // var elems = document.querySelectorAll('.sidenav');
+          //   // console.log(elems[0])
+          //   // var instances = M.Sidenav.getInstance(elems[0]);
+          //   if(instance.isOpen){
+          //     instance.isFixed = false  
+          //     instance.close()
+          //     $('.side-nav-trigger').css('padding-left', '0')
+          //   }else{
+          //     instance.isFixed = true  
+          //     instance.open()
+          //     $('.side-nav-trigger').css('padding-left', '300px')
+
+          //   }
+          // })
+          
+        });
+      </script>
+
+    
+  <script async="" type="text/javascript" id="mini-profiler" src="./Medical_files/includes.js" data-css-url="/mini-profiler-resources/includes.css?v=8cccf9fed3d62814b1d70f252554501b" data-version="8cccf9fed3d62814b1d70f252554501b" data-path="/mini-profiler-resources/" data-current-id="wkin2bq2cjq4odzehxdx" data-ids="wkin2bq2cjq4odzehxdx,fh9zx5zv0gknd80m7bty,nsbzf3rhhtedu3c6r4uk,3rgn5udvyt7e1ukexfnj,qrekfdbqn7mkyc09n6gb,fcc2ao0deosg1u15eyj6,eldwemgk91pc0mryn9w6" data-horizontal-position="left" data-vertical-position="top" data-trivial="false" data-children="false" data-max-traces="20" data-controls="false" data-total-sql-count="false" data-authorized="true" data-toggle-shortcut="alt+p" data-start-hidden="false" data-collapse-results="true" data-html-container="body" data-hidden-custom-fields=""></script>
+
+
+<div class="profiler-results profiler-left profiler-top profiler-no-controls"><div class="profiler-result" style="display: none;"> <div class="profiler-button " style="display: block;">  <span class="profiler-number"> 34.6 <span class="profiler-unit">ms</span> </span>  </div> <div class="profiler-popup"> <div class="profiler-info"> <span class="profiler-name"> /appointments <span class="profiler-overall-duration">(34.6 ms)</span> </span> <span class="profiler-server-time">127.0.0.1 on Mon, 02 Aug 2021 19:03:00 GMT</span> </div> <div class="profiler-output"> <table class="profiler-timings"> <thead> <tr> <th>event</th> <th>duration (ms)</th> <th class="profiler-duration-with-children">with children (ms)</th> <th class="time-from-start">from start (ms)</th>  <th colspan="2">query time (ms)</th>   </tr> </thead> <tbody>  <tr class="" data-timing-id="v5bxyhiuyy0rhrpiscpi"> <td class="profiler-label" title=""> <span class="profiler-indent"></span> GET http://127.0.0.1:3000/appointments </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 2.7 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 34.6 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>0.0 </td>  <td colspan="2"></td>   </tr>    <tr class="" data-timing-id="ydkhsofw2h9oot80zjct"> <td class="profiler-label" title=""> <span class="profiler-indent">&nbsp;</span> Executing action: index </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 19.8 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 31.9 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>1.0 </td>  <td class="profiler-duration " title=""> <a class="profiler-queries-show">  2 <span class="profiler-unit">sql</span> </a> </td> <td class="profiler-duration" title="aggregate duration of all queries in this step (excludes children)"> 4.9 </td>   </tr>    <tr class="" data-timing-id="tvwzz2u6d3nfa67nsdic"> <td class="profiler-label" title=""> <span class="profiler-indent">&nbsp;&nbsp;</span> Rendering: appointments/index.html.erb </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 12.1 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 12.1 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>2.9 </td>  <td class="profiler-duration " title=""> <a class="profiler-queries-show">  4 <span class="profiler-unit">sql</span> </a> </td> <td class="profiler-duration" title="aggregate duration of all queries in this step (excludes children)"> 2.6 </td>   </tr>      </tbody> <tfoot> <tr> <td colspan="3">  <a class="profiler-toggle-duration-with-children" title="toggles column with aggregate child durations">show time with children</a> <a class="profiler-snapshots-page-link" title="Go to snapshots page" href="http://127.0.0.1:3000/mini-profiler-resources/snapshots">snapshots</a> </td>  <td colspan="2" class="profiler-number profiler-percent-in-sql" title="6 queries spent 7.5 ms of total request time"> 21.7 <span class="profiler-unit">% in sql</span> </td>   </tr> </tfoot> </table>  <table class="profiler-timings profiler-client-timings"> <thead> <tr> <th>client event</th> <th>duration (ms)</th> <th>from start (ms)</th> </tr> </thead> <tbody>  <tr class="profiler-trivial"> <td class="profiler-label">Navigation</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>0.0 </td> </tr>  <tr class=""> <td class="profiler-label">Redirect</td> <td class="profiler-duration">  <span class="profiler-unit"></span>298.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>4.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">Connect</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>302.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">Fetch</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>302.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">Domain Lookup</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>302.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">Request</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>305.0 </td> </tr>  <tr class=""> <td class="profiler-label">Response</td> <td class="profiler-duration">  <span class="profiler-unit"></span>1.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>326.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">Unload Event</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>334.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">domLoading</td> <td class="profiler-duration">  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>337.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">Dom Content Loaded Event</td> <td class="profiler-duration">  <span class="profiler-unit"></span>1.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>381.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">domInteractive</td> <td class="profiler-duration">  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>381.0 </td> </tr>  <tr class=""> <td class="profiler-label">First Paint Time</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>392.9 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">Load Event</td> <td class="profiler-duration">  <span class="profiler-unit"></span>0.0  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>420.0 </td> </tr>  <tr class="profiler-trivial"> <td class="profiler-label">domComplete</td> <td class="profiler-duration">  </td> <td class="profiler-duration time-from-start"> <span class="profiler-unit">+</span>420.0 </td> </tr>  </tbody> <tfoot> <tr><td colspan="3">  <a href="http://127.0.0.1:3000/mini-profiler-resources/results?id=wkin2bq2cjq4odzehxdx" class="profiler-share-profiler-results" target="_blank">share</a> <a href="http://127.0.0.1:3000/appointments?pp=help" class="profiler-more-actions">more</a>    <a class="profiler-toggle-trivial" data-show-on-load="false" title="toggles any rows with &lt; 2 ms"> show trivial </a>  </td> </tr></tfoot> </table>   </div> </div>  <div class="profiler-queries"> <table> <thead> <tr> <th style="text-align:right">step<br>time from start<br>query type<br>duration</th> <th style="text-align:left">call stack<br>query</th> </tr> </thead> <tbody>   <tr class="profiler-gap-info profiler-trivial-gaps"> <td class="profiler-info"> 3.60 <span class="profiler-unit">ms</span> </td> <td class="query"> <div>Executing action: index — 1.94 <span class="profiler-unit">ms</span></div> </td> </tr>  <tr class="" data-timing-id="tvwzz2u6d3nfa67nsdic"> <td class="profiler-info"> <div>Rendering: appointments/index.html.erb</div> <div class="profiler-number"><span class="profiler-unit">T+</span>3.6 <span class="profiler-unit">ms</span></div> <div>  Reader </div> <div title="first result fetched: 0.4ms">0.4 <span class="profiler-unit">ms</span></div> </td> <td> <div class="query"> <pre class="profiler-stack-trace">app/views/appointments/index.html.erb:17:in `_app_views_appointments_index_html_erb__3464630946184605778_34320'
+app/controllers/appointments_controller.rb:5:in `index'
+</pre>  <pre class="prettyprint lang-sql"><code>SELECT 1; </code></pre>  </div> </td> </tr>    <tr class="profiler-gap-info profiler-trivial-gaps"> <td class="profiler-info"> 1.70 <span class="profiler-unit">ms</span> </td> <td class="query"> <div>Rendering: appointments/index.html.erb — 1.70 <span class="profiler-unit">ms</span></div> </td> </tr>  <tr class="" data-timing-id="tvwzz2u6d3nfa67nsdic"> <td class="profiler-info"> <div>Rendering: appointments/index.html.erb</div> <div class="profiler-number"><span class="profiler-unit">T+</span>5.7 <span class="profiler-unit">ms</span></div> <div>  Reader </div> <div title="first result fetched: 0.3ms">0.3 <span class="profiler-unit">ms</span></div> </td> <td> <div class="query"> <pre class="profiler-stack-trace">app/views/appointments/index.html.erb:17:in `_app_views_appointments_index_html_erb__3464630946184605778_34320'
+app/controllers/appointments_controller.rb:5:in `index'
+</pre>  <pre class="prettyprint lang-sql"><code>SELECT "appointments".* FROM "appointments"; </code></pre>  </div> </td> </tr>    <tr class="profiler-gap-info profiler-trivial-gaps"> <td class="profiler-info"> 2.70 <span class="profiler-unit">ms</span> </td> <td class="query"> <div>Rendering: appointments/index.html.erb — 2.70 <span class="profiler-unit">ms</span></div> </td> </tr>  <tr class="" data-timing-id="tvwzz2u6d3nfa67nsdic"> <td class="profiler-info"> <div>Rendering: appointments/index.html.erb</div> <div class="profiler-number"><span class="profiler-unit">T+</span>8.7 <span class="profiler-unit">ms</span></div> <div>  Reader </div> <div title="first result fetched: 0.3ms">0.3 <span class="profiler-unit">ms</span></div> </td> <td> <div class="query"> <pre class="profiler-stack-trace">app/views/appointments/index.html.erb:20:in `block in _app_views_appointments_index_html_erb__3464630946184605778_34320'
+app/views/appointments/index.html.erb:17:in `_app_views_appointments_index_html_erb__3464630946184605778_34320'
+app/controllers/appointments_controller.rb:5:in `index'
+</pre>  <pre class="prettyprint lang-sql"><code>SELECT "patients".* FROM "patients" WHERE "patients"."id" = $1 LIMIT $2; </code></pre>  </div> </td> </tr>    <tr class="profiler-gap-info profiler-trivial-gaps"> <td class="profiler-info"> 2.40 <span class="profiler-unit">ms</span> </td> <td class="query"> <div>Rendering: appointments/index.html.erb — 2.40 <span class="profiler-unit">ms</span></div> </td> </tr>  <tr class="" data-timing-id="tvwzz2u6d3nfa67nsdic"> <td class="profiler-info"> <div>Rendering: appointments/index.html.erb</div> <div class="profiler-number"><span class="profiler-unit">T+</span>11.4 <span class="profiler-unit">ms</span></div> <div>  Reader </div> <div title="first result fetched: 1.6ms">1.6 <span class="profiler-unit">ms</span></div> </td> <td> <div class="query"> <pre class="profiler-stack-trace">app/views/appointments/index.html.erb:22:in `block in _app_views_appointments_index_html_erb__3464630946184605778_34320'
+app/views/appointments/index.html.erb:17:in `_app_views_appointments_index_html_erb__3464630946184605778_34320'
+app/controllers/appointments_controller.rb:5:in `index'
+</pre>  <pre class="prettyprint lang-sql"><code>SELECT "reports".* FROM "reports" WHERE "reports"."appointment_id" = $1 LIMIT $2; </code></pre>  </div> </td> </tr>    <tr class="profiler-gap-info"> <td class="profiler-info"> 10.50 <span class="profiler-unit">ms</span> </td> <td class="query"> <div>Executing action: index — 8.50 <span class="profiler-unit">ms</span></div> </td> </tr>  <tr class="" data-timing-id="ydkhsofw2h9oot80zjct"> <td class="profiler-info"> <div>Executing action: index</div> <div class="profiler-number"><span class="profiler-unit">T+</span>23.5 <span class="profiler-unit">ms</span></div> <div>  Reader </div> <div title="first result fetched: 0.5ms">0.5 <span class="profiler-unit">ms</span></div> </td> <td> <div class="query"> <pre class="profiler-stack-trace">app/views/layouts/application.html.erb:69:in `_app_views_layouts_application_html_erb__2132278470729926446_33760'
+app/controllers/appointments_controller.rb:5:in `index'
+</pre>  <pre class="prettyprint lang-sql"><code>SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2; </code></pre>  </div> </td> </tr>    <tr class="profiler-gap-info profiler-trivial-gaps"> <td class="profiler-info"> 3.60 <span class="profiler-unit">ms</span> </td> <td class="query"> <div>Executing action: index — 3.60 <span class="profiler-unit">ms</span></div> </td> </tr>  <tr class="" data-timing-id="ydkhsofw2h9oot80zjct"> <td class="profiler-info"> <div>Executing action: index</div> <div class="profiler-number"><span class="profiler-unit">T+</span>27.6 <span class="profiler-unit">ms</span></div> <div>  Reader </div> <div title="first result fetched: 4.4ms">4.4 <span class="profiler-unit">ms</span></div> </td> <td> <div class="query"> <pre class="profiler-stack-trace">app/views/layouts/application.html.erb:126:in `_app_views_layouts_application_html_erb__2132278470729926446_33760'
+app/controllers/appointments_controller.rb:5:in `index'
+</pre>  <pre class="prettyprint lang-sql"><code>SELECT "doctors".* FROM "doctors" WHERE "doctors"."user_id" = $1; </code></pre>  </div> </td> </tr>   <tr class="profiler-gap-info profiler-trivial-gaps"> <td class="profiler-info"> 2.57 <span class="profiler-unit">ms</span> </td> <td class="query"> <div>GET http://127.0.0.1:3000/appointments — 1.71 <span class="profiler-unit">ms</span></div> </td> </tr>   </tbody> </table> <p class="profiler-trivial-gap-container"> <a class="profiler-toggle-trivial-gaps">show trivial gaps</a> </p> </div>  </div><div class="profiler-result"><div class="profiler-button profiler-totals" style="display: block;"><span class="profiler-number">42.1</span> <span class="profiler-unit">ms</span><span class="profiler-reqs">7</span></div></div><div class="profiler-result" style="display: none;"> <div class="profiler-button " style="display: block;">  <span class="profiler-number"> 2.2 <span class="profiler-unit">ms</span> </span>  </div> <div class="profiler-popup"> <div class="profiler-info"> <span class="profiler-name"> /cable <span class="profiler-overall-duration">(2.2 ms)</span> </span> <span class="profiler-server-time">127.0.0.1 on Mon, 02 Aug 2021 19:02:57 GMT</span> </div> <div class="profiler-output"> <table class="profiler-timings"> <thead> <tr> <th>event</th> <th>duration (ms)</th> <th class="profiler-duration-with-children">with children (ms)</th> <th class="time-from-start">from start (ms)</th>  <th colspan="2">query time (ms)</th>   </tr> </thead> <tbody>  <tr class="" data-timing-id="rxqnlm7gudoeapghujas"> <td class="profiler-label" title=""> <span class="profiler-indent"></span> GET http://127.0.0.1:3000/cable </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 2.2 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 2.2 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>0.0 </td>  <td colspan="2"></td>   </tr>  </tbody> <tfoot> <tr> <td colspan="3">   <a href="http://127.0.0.1:3000/mini-profiler-resources/results?id=fh9zx5zv0gknd80m7bty" class="profiler-share-profiler-results" target="_blank">share</a> <a href="http://127.0.0.1:3000/cable?pp=help" class="profiler-more-actions">more</a>    <a class="profiler-toggle-trivial" data-show-on-load="false" title="toggles any rows with &lt; 2 ms"> show trivial </a>   <a class="profiler-toggle-duration-with-children" title="toggles column with aggregate child durations">show time with children</a> <a class="profiler-snapshots-page-link" title="Go to snapshots page" href="http://127.0.0.1:3000/mini-profiler-resources/snapshots">snapshots</a> </td>  <td colspan="2" class="profiler-number profiler-percent-in-sql" title="0 queries spent 0.0 ms of total request time"> 0.0 <span class="profiler-unit">% in sql</span> </td>   </tr> </tfoot> </table>   </div> </div>  <div class="profiler-queries"> <table> <thead> <tr> <th style="text-align:right">step<br>time from start<br>query type<br>duration</th> <th style="text-align:left">call stack<br>query</th> </tr> </thead> <tbody>  </tbody> </table> <p class="profiler-trivial-gap-container"> <a class="profiler-toggle-trivial-gaps">show trivial gaps</a> </p> </div>  </div><div class="profiler-result" style="display: none;"> <div class="profiler-button " style="display: block;">  <span class="profiler-number"> 0.6 <span class="profiler-unit">ms</span> </span>  </div> <div class="profiler-popup"> <div class="profiler-info"> <span class="profiler-name"> /manifest.json <span class="profiler-overall-duration">(0.6 ms)</span> </span> <span class="profiler-server-time">127.0.0.1 on Mon, 02 Aug 2021 19:02:57 GMT</span> </div> <div class="profiler-output"> <table class="profiler-timings"> <thead> <tr> <th>event</th> <th>duration (ms)</th> <th class="profiler-duration-with-children">with children (ms)</th> <th class="time-from-start">from start (ms)</th>  <th colspan="2">query time (ms)</th>   </tr> </thead> <tbody>  <tr class="profiler-trivial" data-timing-id="5yznbf17xhwu1tih1avm"> <td class="profiler-label" title=""> <span class="profiler-indent"></span> GET http://127.0.0.1:3000/manifest.json </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 0.6 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 0.6 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>0.0 </td>  <td colspan="2"></td>   </tr>  </tbody> <tfoot> <tr> <td colspan="3">   <a href="http://127.0.0.1:3000/mini-profiler-resources/results?id=nsbzf3rhhtedu3c6r4uk" class="profiler-share-profiler-results" target="_blank">share</a> <a href="http://127.0.0.1:3000/manifest.json?pp=help" class="profiler-more-actions">more</a>    <a class="profiler-toggle-trivial" data-show-on-load="false" title="toggles any rows with &lt; 2 ms"> show trivial </a>   <a class="profiler-toggle-duration-with-children" title="toggles column with aggregate child durations">show time with children</a> <a class="profiler-snapshots-page-link" title="Go to snapshots page" href="http://127.0.0.1:3000/mini-profiler-resources/snapshots">snapshots</a> </td>  <td colspan="2" class="profiler-number profiler-percent-in-sql" title="0 queries spent 0.0 ms of total request time"> 0.0 <span class="profiler-unit">% in sql</span> </td>   </tr> </tfoot> </table>   </div> </div>  <div class="profiler-queries"> <table> <thead> <tr> <th style="text-align:right">step<br>time from start<br>query type<br>duration</th> <th style="text-align:left">call stack<br>query</th> </tr> </thead> <tbody>  </tbody> </table> <p class="profiler-trivial-gap-container"> <a class="profiler-toggle-trivial-gaps">show trivial gaps</a> </p> </div>  </div><div class="profiler-result" style="display: none;"> <div class="profiler-button " style="display: block;">  <span class="profiler-number"> 2.7 <span class="profiler-unit">ms</span> </span>  </div> <div class="profiler-popup"> <div class="profiler-info"> <span class="profiler-name"> /favicon.ico <span class="profiler-overall-duration">(2.7 ms)</span> </span> <span class="profiler-server-time">127.0.0.1 on Mon, 02 Aug 2021 19:02:57 GMT</span> </div> <div class="profiler-output"> <table class="profiler-timings"> <thead> <tr> <th>event</th> <th>duration (ms)</th> <th class="profiler-duration-with-children">with children (ms)</th> <th class="time-from-start">from start (ms)</th>  <th colspan="2">query time (ms)</th>   </tr> </thead> <tbody>  <tr class="" data-timing-id="pm73yumfw9hocm5gxpbg"> <td class="profiler-label" title=""> <span class="profiler-indent"></span> GET http://127.0.0.1:3000/favicon.ico </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 2.7 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 2.7 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>0.0 </td>  <td colspan="2"></td>   </tr>  </tbody> <tfoot> <tr> <td colspan="3">   <a href="http://127.0.0.1:3000/mini-profiler-resources/results?id=3rgn5udvyt7e1ukexfnj" class="profiler-share-profiler-results" target="_blank">share</a> <a href="http://127.0.0.1:3000/favicon.ico?pp=help" class="profiler-more-actions">more</a>    <a class="profiler-toggle-trivial" data-show-on-load="false" title="toggles any rows with &lt; 2 ms"> show trivial </a>   <a class="profiler-toggle-duration-with-children" title="toggles column with aggregate child durations">show time with children</a> <a class="profiler-snapshots-page-link" title="Go to snapshots page" href="http://127.0.0.1:3000/mini-profiler-resources/snapshots">snapshots</a> </td>  <td colspan="2" class="profiler-number profiler-percent-in-sql" title="0 queries spent 0.0 ms of total request time"> 0.0 <span class="profiler-unit">% in sql</span> </td>   </tr> </tfoot> </table>   </div> </div>  <div class="profiler-queries"> <table> <thead> <tr> <th style="text-align:right">step<br>time from start<br>query type<br>duration</th> <th style="text-align:left">call stack<br>query</th> </tr> </thead> <tbody>  </tbody> </table> <p class="profiler-trivial-gap-container"> <a class="profiler-toggle-trivial-gaps">show trivial gaps</a> </p> </div>  </div><div class="profiler-result" style="display: none;"> <div class="profiler-button " style="display: block;">  <span class="profiler-number"> 1.1 <span class="profiler-unit">ms</span> </span>  </div> <div class="profiler-popup"> <div class="profiler-info"> <span class="profiler-name"> /service-worker.js <span class="profiler-overall-duration">(1.1 ms)</span> </span> <span class="profiler-server-time">127.0.0.1 on Mon, 02 Aug 2021 19:02:58 GMT</span> </div> <div class="profiler-output"> <table class="profiler-timings"> <thead> <tr> <th>event</th> <th>duration (ms)</th> <th class="profiler-duration-with-children">with children (ms)</th> <th class="time-from-start">from start (ms)</th>  <th colspan="2">query time (ms)</th>   </tr> </thead> <tbody>  <tr class="profiler-trivial" data-timing-id="sdqdi07af8gwngjvgaj8"> <td class="profiler-label" title=""> <span class="profiler-indent"></span> GET http://127.0.0.1:3000/service-worker.js </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 1.1 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 1.1 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>0.0 </td>  <td colspan="2"></td>   </tr>  </tbody> <tfoot> <tr> <td colspan="3">   <a href="http://127.0.0.1:3000/mini-profiler-resources/results?id=fcc2ao0deosg1u15eyj6" class="profiler-share-profiler-results" target="_blank">share</a> <a href="http://127.0.0.1:3000/service-worker.js?pp=help" class="profiler-more-actions">more</a>    <a class="profiler-toggle-trivial" data-show-on-load="false" title="toggles any rows with &lt; 2 ms"> show trivial </a>   <a class="profiler-toggle-duration-with-children" title="toggles column with aggregate child durations">show time with children</a> <a class="profiler-snapshots-page-link" title="Go to snapshots page" href="http://127.0.0.1:3000/mini-profiler-resources/snapshots">snapshots</a> </td>  <td colspan="2" class="profiler-number profiler-percent-in-sql" title="0 queries spent 0.0 ms of total request time"> 0.0 <span class="profiler-unit">% in sql</span> </td>   </tr> </tfoot> </table>   </div> </div>  <div class="profiler-queries"> <table> <thead> <tr> <th style="text-align:right">step<br>time from start<br>query type<br>duration</th> <th style="text-align:left">call stack<br>query</th> </tr> </thead> <tbody>  </tbody> </table> <p class="profiler-trivial-gap-container"> <a class="profiler-toggle-trivial-gaps">show trivial gaps</a> </p> </div>  </div><div class="profiler-result" style="display: none;"> <div class="profiler-button " style="display: block;">  <span class="profiler-number"> 0.5 <span class="profiler-unit">ms</span> </span>  </div> <div class="profiler-popup"> <div class="profiler-info"> <span class="profiler-name"> /favicon.ico <span class="profiler-overall-duration">(0.5 ms)</span> </span> <span class="profiler-server-time">127.0.0.1 on Mon, 02 Aug 2021 19:03:00 GMT</span> </div> <div class="profiler-output"> <table class="profiler-timings"> <thead> <tr> <th>event</th> <th>duration (ms)</th> <th class="profiler-duration-with-children">with children (ms)</th> <th class="time-from-start">from start (ms)</th>  <th colspan="2">query time (ms)</th>   </tr> </thead> <tbody>  <tr class="profiler-trivial" data-timing-id="tuvpia1sxkjom2ua95rd"> <td class="profiler-label" title=""> <span class="profiler-indent"></span> GET http://127.0.0.1:3000/favicon.ico </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 0.5 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 0.5 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>0.0 </td>  <td colspan="2"></td>   </tr>  </tbody> <tfoot> <tr> <td colspan="3">   <a href="http://127.0.0.1:3000/mini-profiler-resources/results?id=eldwemgk91pc0mryn9w6" class="profiler-share-profiler-results" target="_blank">share</a> <a href="http://127.0.0.1:3000/favicon.ico?pp=help" class="profiler-more-actions">more</a>    <a class="profiler-toggle-trivial" data-show-on-load="false" title="toggles any rows with &lt; 2 ms"> show trivial </a>   <a class="profiler-toggle-duration-with-children" title="toggles column with aggregate child durations">show time with children</a> <a class="profiler-snapshots-page-link" title="Go to snapshots page" href="http://127.0.0.1:3000/mini-profiler-resources/snapshots">snapshots</a> </td>  <td colspan="2" class="profiler-number profiler-percent-in-sql" title="0 queries spent 0.0 ms of total request time"> 0.0 <span class="profiler-unit">% in sql</span> </td>   </tr> </tfoot> </table>   </div> </div>  <div class="profiler-queries"> <table> <thead> <tr> <th style="text-align:right">step<br>time from start<br>query type<br>duration</th> <th style="text-align:left">call stack<br>query</th> </tr> </thead> <tbody>  </tbody> </table> <p class="profiler-trivial-gap-container"> <a class="profiler-toggle-trivial-gaps">show trivial gaps</a> </p> </div>  </div><div class="profiler-result" style="display: none;"> <div class="profiler-button " style="display: block;">  <span class="profiler-number"> 0.5 <span class="profiler-unit">ms</span> </span>  </div> <div class="profiler-popup"> <div class="profiler-info"> <span class="profiler-name"> /logo.jpeg <span class="profiler-overall-duration">(0.5 ms)</span> </span> <span class="profiler-server-time">127.0.0.1 on Mon, 02 Aug 2021 19:02:57 GMT</span> </div> <div class="profiler-output"> <table class="profiler-timings"> <thead> <tr> <th>event</th> <th>duration (ms)</th> <th class="profiler-duration-with-children">with children (ms)</th> <th class="time-from-start">from start (ms)</th>  <th colspan="2">query time (ms)</th>   </tr> </thead> <tbody>  <tr class="profiler-trivial" data-timing-id="gjym517z8g9bmv62yo8p"> <td class="profiler-label" title=""> <span class="profiler-indent"></span> GET http://127.0.0.1:3000/logo.jpeg </td> <td class="profiler-duration" title="duration of this step without any children&#39;s durations"> 0.5 </td> <td class="profiler-duration profiler-duration-with-children" title="duration of this step and its children"> 0.5 </td> <td class="profiler-duration time-from-start" title="time elapsed since profiling started"> <span class="profiler-unit">+</span>0.0 </td>  <td colspan="2"></td>   </tr>  </tbody> <tfoot> <tr> <td colspan="3">   <a href="http://127.0.0.1:3000/mini-profiler-resources/results?id=qrekfdbqn7mkyc09n6gb" class="profiler-share-profiler-results" target="_blank">share</a> <a href="http://127.0.0.1:3000/logo.jpeg?pp=help" class="profiler-more-actions">more</a>    <a class="profiler-toggle-trivial" data-show-on-load="false" title="toggles any rows with &lt; 2 ms"> show trivial </a>   <a class="profiler-toggle-duration-with-children" title="toggles column with aggregate child durations">show time with children</a> <a class="profiler-snapshots-page-link" title="Go to snapshots page" href="http://127.0.0.1:3000/mini-profiler-resources/snapshots">snapshots</a> </td>  <td colspan="2" class="profiler-number profiler-percent-in-sql" title="0 queries spent 0.0 ms of total request time"> 0.0 <span class="profiler-unit">% in sql</span> </td>   </tr> </tfoot> </table>   </div> </div>  <div class="profiler-queries"> <table> <thead> <tr> <th style="text-align:right">step<br>time from start<br>query type<br>duration</th> <th style="text-align:left">call stack<br>query</th> </tr> </thead> <tbody>  </tbody> </table> <p class="profiler-trivial-gap-container"> <a class="profiler-toggle-trivial-gaps">show trivial gaps</a> </p> </div>  </div></div><div class="sidenav-overlay" style="display: none; opacity: 0;"></div><div class="drag-target"></div></body></html>

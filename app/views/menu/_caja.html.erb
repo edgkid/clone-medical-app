@@ -1,0 +1,66 @@
+<ul  id="slide-out" class="sidenav sidenav-fixed" style="background: #f8f8f9;">
+    <li>  
+        <div class="user-view" style=" heigth: 100%; background: #2196f3; height: 65px;" >   
+            <%= render partial: 'menu/logo_menu' %>
+        </div>
+    </li>
+    <li>
+      <div class="user-view">
+         <span class=" grey-text name">
+            <p style="font-family: FuturaStd Medium; color: #868383;">Caja</p>
+          </span>
+          <span class=" grey-text email" style="font-family: FuturaStd Medium; color: #868383;"> <%= current_user.email %></span>
+      </div>
+     
+    </li>
+    <li><div class="divider"></div></li>
+    <% if current_user.doctor%>
+        <li>
+            <a href="/administracion/aprobar-pago">
+                <i class="material-icons">
+                    <%= image_tag("icons/ic_dashboard.svg", :alt => "rss feed", style:"width: 25px;") %>
+                </i>
+                Aprobar pagos
+            </a>
+        </li>
+    <% end %>
+    <li>
+        <a href="/perfilB">
+            <i class="material-icons">
+                <%= image_tag("icons/ic_permissions.svg", :alt => "rss feed", style:"width: 25px;") %>
+            </i>
+            Perfil
+        </a>
+    </li>
+    <li>
+        <a href="/cambiar-password">
+            <i class="material-icons">lock_outline</i>
+            Cambiar contraseña
+        </a>
+    </li>
+     <!--<li>
+        <a  class="collapsible-list" style=" background: #f8f8f9; color: #424242;">        
+            <i class="material-icons" style="color: #848484;">check_circle</i>
+            Administración
+        </a>
+        <div class="content-list">
+              <ul>
+                <li>
+                    <a href="/administracion/aprobar-pago">
+                        <i class="material-icons">check_circle</i>
+                        Aprobar Pagos
+                    </a>
+                </li>
+              </ul>
+
+        </div>
+    </li>-->
+    
+    <li style="margin-top:10%;">
+        <%= link_to destroy_user_session_path, method: :delete, style:"font-family: FuturaStd bold;" do %>
+            <i class="material-icons">exit_to_app</i>
+            Salir
+        <% end %>
+    </li>
+
+</ul>

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col s12 m12">
+        <div style="width: 96%; margin-left: 2%; margin-right: 2%">
+            <ul class="collapsible"> 
+                <li>
+                    <div class="collapsible-header">
+                    <i class="material-icons">show_chart</i>
+                        <p style="font-family: FuturaStd Medium; padding:0px;">Pacientes Atendidos por Especialidad</p>
+                    </div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col s12 m8">
+                                <%= bar_chart(@patients_per_areas)%>
+                            </div>
+                            <div class="col s12 m4">
+                                <div style = "margin-top:10%">
+                                    <% total = 0 %>
+                                    <p style="font-family: FuturaStd Medium">A continuación se muestra la distribución del total de pacientes atendidos segun especialidad médica</p>    
+                                    <% @patients_per_areas.each do |area|%>
+                                        <% total = total + area[1] %>    
+                                    <% end %>
+                                    <p style="font-family: FuturaStd Medium"><b>Total de pacientes: </b> <%= total%></p>    
+                                </div>
+                                <a href="/statistics-pacientes-por-especialidad">Mostrar Detalle</a>   
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

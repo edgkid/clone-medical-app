@@ -1,0 +1,108 @@
+<style>
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+
+    .row{
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 10px 0px;    
+        justify-content: center;
+    }
+
+    @media only screen and (max-width : 992px) {
+        .row {
+            width: 100%;
+        }
+    }
+    input, button{
+        width: 100%;
+        margin: 0;
+        padding: 10px
+    }
+
+    button {
+        border: 0;
+        color: white;
+        cursor: pointer;
+        padding: 10px
+    }
+
+    button.login{
+        background-color: #2296f2;  
+    }
+
+    button.signup{
+        background-color: #f94181;  
+    }
+
+    .errors{
+        width: 100%;
+        padding: 10px;
+        background-color: #ff6161;
+        color: white;
+    }
+
+</style>
+
+
+<%= form_with url: "/login", method: :post do |form| %>
+
+    <div class='login-container'>
+        <div class="row">
+            <%= image_tag "logo.jpeg" %>            
+        </div>
+
+
+        <div class="row">
+            <span >
+                Introduce tus credenciales para continuar.
+            </span>
+        </div>
+
+        <div class="row">
+            <% flash.each do |type, msg| %>
+                <div class="errors">
+                    <%= msg %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="row">
+            <input type="email" name="email" placeholder="Correo electrónico" />
+        </div>
+
+        <div class="row">
+            <input type="password" name="password" placeholder="Contraseña" />
+        </div>
+
+        <div class="row">
+            <button type="submit" class="login" />
+                Iniciar sesión
+            </button>
+        </div>
+
+        <div class="row">
+            <span> ¿No tienes una cuenta? </span>
+        </div>
+
+        <div class="row">
+            <button class="signup" >
+                Solicitar cuenta
+            </button>
+        </div>
+        
+        <div class="row">
+            <span> ¿Olvidaste tu contraseña? </span>
+        </div>        
+    </div>
+<% end %>

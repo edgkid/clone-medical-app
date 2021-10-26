@@ -1,0 +1,255 @@
+<div class="row">
+    <div class="col s12 m12">
+        <div class="card">
+            <div class="card-content">
+                <h6 style="font-family: FuturaStd Medium">Sala de Espera</h6>
+                <%# <div class="row">
+                    <div class="col s12 m12" style="">
+                        <label style="font-family: FuturaStd Medium;">Conuslta</label>
+                    </div>
+                </div> %>
+
+<!-- Vista de medico -->
+<% if current_user.doctor? %>
+
+                
+                <!--<p style="font-family: FuturaStd bold; font-size:13px; color:#D8D8D8; ">
+                    El siguiente listado muestra a los pacientes y colegas disponibles, aqui podrá llevar a cabo una consulta en línea.
+                </p>-->
+                <div style="overflow: scroll">
+                    <table  id="DataTableId" class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="font-family: FuturaStd Medium">Paciente</th>
+                                <th scope="col" style="font-family: FuturaStd Medium">Cédula</th>
+                                <th scope="col" style="font-family: FuturaStd Medium"></th>
+                                <th scope="col" style="font-family: FuturaStd Medium">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% Chat.by_doctor(current_user.doctor.id).each do |chat| %>
+                                <tr>
+                                    <td>
+                                        <p style="font-family: FuturaStd Medium"><%= chat.patient.name + " " + chat.patient.last_name %></p>
+                                    </td>
+                                    <td>
+                                         <p style="font-family: FuturaStd Medium"><%= chat.patient.document %></p>
+                                    </td>
+                                    
+                                    <td>
+                                        <%= image_tag "active.png", style: 'height:15px; width:15px;' %>         
+                                    </td>
+                                    <td>
+                                        <%= link_to "Revisar chat", doctor_message_path(chat) %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                            
+                        </tbody>
+                    </table>
+                </div>        
+            </div>
+        </div>
+        </div>     
+    </div>
+<%end%>
+
+
+<!-- Vista de paciente -->
+
+<% if current_user.patient? %>
+
+                
+                <p style="font-family: FuturaStd bold; font-size:13px; color:#D8D8D8; ">
+                    El siguiente listado muestra a los médicos disponibles en Línea  para que usted pueda llevar a cabo su consulta.
+                </p>
+                
+                
+                <div style="overflow: scroll">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="font-family: FuturaStd Medium">Especialidad</th>
+                                    <th scope="col" style="font-family: FuturaStd Medium">Nombre</th>
+                                    <th scope="col" style="font-family: FuturaStd Medium">Activo</th>
+                                    <th scope="col" style="font-family: FuturaStd Medium">Acción</th>
+                                </tr>
+                            </thead>
+                            <% if @patient_plan.length > 0 %>
+                                <tbody 
+                                    id="doctor-table"
+                                    data-patient="<%= current_user.patient.id %>"
+                                    data-patient-plan-status="<%= @patient_plan[0].status.upcase %>"
+                                    data-patient-plan-count="<%= @patient_plan[0].count || 0 %>"
+                                >
+                            <% else %>
+                                <tbody 
+                                    id="doctor-table"
+                                    data-patient="<%= current_user.patient.id %>"
+                                >
+                            <% end %>
+                            
+
+                                <% @doctors.each do |user| %>
+                                    <tr  id="<%= user.id %>">
+                                        <td>
+                                            <p style="font-family: FuturaStd Medium"><%= user.speciality %></p>
+                                        </td>
+                                        <td>
+                                            <p style="font-family: FuturaStd Medium">
+                                                <%= user.full_name %>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <%= image_tag "active.png", style: 'height:15px; width:15px;' %> 
+                                        </td>
+                                        <td>
+
+                                            <%if @patient_plan.length == 0 %>
+                                                <!--solicitar creacion de cuenta--->
+                                                <a style="color:#039BE5;" href="/suscriptions" >Suscribe un plan</a>
+                                            <%end%>
+
+                                            <%if @patient_plan.length == 1 %>
+                                                <!--descontar de plan por defecto-->
+                                                 <% if @patient_plan[0].status.upcase == 'Aprobado'.upcase && @patient_plan[0].count > 0   %>
+                                                    <a class="modal-trigger" style="color:#039BE5;" href="#idModalAlertaDeCosumo" onclick="showOptionsOnePlan('<%= current_user.patient.id %>%<%= user.doctor_id %>%<%= @patient_plan[0].plan.name %>%<%= @patient_plan[0].plan.type_plan %>%<%= @patient_plan[0].count %>%<%= @patient_plan[0].plan.total_appointments %>%<%= @patient_plan[0].id %>%true')">Iniciar Chat</a>
+                                                <%else%>
+                                                    <a class="modal-trigger" style="color:#039BE5;" href="#idModalAlertaDeCosumo" onclick="showOptionsOnePlan('<%= current_user.patient.id %>%<%= user.doctor_id %>%<%= @patient_plan[0].plan.name %>%<%= @patient_plan[0].plan.type_plan %>%<%= @patient_plan[0].count %>%<%= @patient_plan[0].plan.total_appointments %>%<%= @patient_plan[0].id %>%false')">Iniciar Chat</a>
+                                                <%end%>
+                                            <%end%>
+                                            
+                                            <%if @patient_plan.length >= 2 %>
+                                                <!--Que eleiga de donde descontar-->
+                                                <a class="modal-trigger" style="color:#039BE5;" href="#idModalAlertaDeCosumo" onclick="showOptionsManyPlans('<%= current_user.patient.id %>%<%= user.doctor_id %>%<%= @patient_plan[0].plan.name %>%<%= @patient_plan[0].plan.type_plan %>%<%= @patient_plan[0].count %>%<%= @patient_plan[0].plan.total_appointments %>%<%= @patient_plan[0].id %>%<%= @patient_plan[0].status %>%<%= @patient_plan[1].plan.name %>%<%= @patient_plan[1].plan.type_plan %>%<%= @patient_plan[1].count %>%<%= @patient_plan[1].plan.total_appointments %>%<%= @patient_plan[1].id %>%<%= @patient_plan[1].status %>')">Iniciar Chat</a>                                              
+                                            <%end%>
+                                            
+                                        </td>
+                                    </tr>                                                
+                                <% end %>
+
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+        </div>     
+    </div>
+
+    
+<%end%>
+
+<!-- Modal para afvertir de decuento de cita sobre plan -->
+<div id="idModalAlertaDeCosumo" class="modal">
+    <div class="modal-content">
+      <h6 style="font-family: FuturaStd bold" id="id_title"></h6>
+      <p id="id_message" style="font-family: FuturaStd Medium">
+        
+      </p>
+       <%= form_for @chat do |f| %>
+
+            <div id = "id_select"></div>
+            
+            <div id="id_inputs">
+            <input id="patient_id" name="patient_id" type="text" value=""/>
+            <input id="doctor_id" name="doctor_id" type="text" value=""/>
+            <input type="submit" name="Aceptar" value=""/>
+            </div>
+            
+            
+        <% end %>    
+    </div>
+</div>
+
+<script>
+  function showOptionsOnePlan(value) {
+    var splitResult = value.split("%");
+    var inputshtml = '';
+    var titlehtml = '';
+    var messagehtml = '';
+
+    if (splitResult[7] == "true") {
+        inputshtml= '<div id="id_inputs"><input id="patient_id" name="patient_id" type="text" value="'+ splitResult[0] +'" hidden /><input id="doctor_id" name="doctor_id" type="text" value="'+ splitResult[1] +'" hidden/><input id="plan_id" name="plan_id" type="text" value="'+ splitResult[6] +'" hidden/><input type="submit"  value="Aceptar" style="background: #039BE5; color:white; height: 40px; width:20%; border:none; border-radius: 10px;"/></div>';
+        titlehtml = '<h4 style="font-family: FuturaStd bold" id="idTitle">Seguro que desea iniciar una consulta</h4>';
+        messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium">Recuerde que al finalizar la consulta, la misma sera descontada de su plan de suscpción actual.</p>';
+        messagehtml = messagehtml + ' Datos del plan:<br><br> <b>plan:</b> ' + splitResult[2] +', <b>tipo de plan:</b> '+ splitResult[3].toLowerCase() +', <b>consultas:</b> ' + splitResult[4] +'/'+ splitResult[5] +' </p>'
+    }
+
+    if (splitResult[7] == "false") {
+         inputshtml= '<div id="id_inputs"></div>';
+        titlehtml = '<h4 style="font-family: FuturaStd bold" id="idTitle">Debe adquirir un nuevo plan</h4>';
+        messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium">Usted no cuenta con un plan de consultas médicas activo actualmente<b> Por favor dirijase a la sección de suscripciones para adquirir un nuevo plan.</b></p>'    
+    }
+    
+    $("#id_inputs").html(inputshtml);
+    $("#id_title").html(titlehtml);
+    $("#id_message").html(messagehtml);
+  
+  }
+</script>
+
+
+<script>
+  function showOptionsManyPlans(value) {
+    var splitResult = value.split("%");
+    var inputshtml = '';
+    var titlehtml = '';
+    var messagehtml = '';
+    var select_plan_p = '';
+    var select_plan_s = '';
+
+     if (splitResult[7] == "Aprobado" && splitResult[13] == "Aprobado" ) {
+        inputshtml= '<div id="id_inputs"><input id="patient_id" name="patient_id" type="text" value="'+ splitResult[0] +'" hidden/><input id="doctor_id" name="doctor_id" type="text" value="'+ splitResult[1] +'" hidden/><input id="plan_id" name="plan_id" type="text" value="0" hidden /><input type="submit"  value="Aceptar" style="background: #039BE5; color:white; height: 40px; width:20%; border:none; border-radius: 10px;"/></div>';
+        titlehtml = '<h4 style="font-family: FuturaStd bold" id="idTitle">Seguro que desea iniciar una consulta</h4>';
+        messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium">Recuerde que al finalizar la consulta, la misma sera descontada de su plan de suscpción seleccionado.';
+        messagehtml = messagehtml + ' Datos del plan:<br><br> <b>plan:</b> ' + splitResult[2] +', <b>tipo de plan:</b> '+ splitResult[3].toLowerCase() +', <b>consultas:</b> ' + splitResult[4] +'/'+ splitResult[5] +' <b>estatus:</b> '+ splitResult[7] +' <br>'
+        messagehtml = messagehtml + '<b>plan:</b> ' + splitResult[8] +', <b>tipo de plan:</b> '+ splitResult[9].toLowerCase() +', <b>consultas:</b> ' + splitResult[10] +'/'+ splitResult[11] +' <b>estatus:</b> '+ splitResult[13] +'</p>'
+        select_plan_p = '<p><label><input name="type_plan" type="radio" value="'+ splitResult[12] +'" onclick="setPlan()" /><span>Particular</span></label></p>';
+        select_plan_s = '<p><label><input name="type_plan" type="radio" value="'+ splitResult[6] +'" onclick="setPlan()" /><span>Seguro</span></label></p>';
+    }
+
+    if (splitResult[7] == "Aprobado" && splitResult[13] != "Aprobado" ) {
+        inputshtml= '<div id="id_inputs"><input id="patient_id" name="patient_id" type="text" value="'+ splitResult[0] +'" hidden /><input id="doctor_id" name="doctor_id" type="text" value="'+ splitResult[1] +'" hidden /><input id="plan_id" name="plan_id" type="text" value="'+ splitResult[6] +'" hidden/><input type="submit"  value="Aceptar" style="background: #039BE5; color:white; height: 40px; width:20%; border:none; border-radius: 10px;"/></div>';
+        titlehtml = '<h4 style="font-family: FuturaStd bold" id="idTitle">Seguro que desea iniciar una consulta</h4>';
+        messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium">Recuerde que al finalizar la consulta, la misma sera descontada de su plan activo (Aprobado).';
+        messagehtml = messagehtml + ' Datos del plan:<br><br> <b>plan:</b> ' + splitResult[2] +', <b>tipo de plan:</b> '+ splitResult[3].toLowerCase() +', <b>consultas:</b> ' + splitResult[4] +'/'+ splitResult[5] +' <b>estatus:</b> '+ splitResult[7] +' <br>'
+        messagehtml = messagehtml + '<b>plan:</b> ' + splitResult[8] +', <b>tipo de plan:</b> '+ splitResult[9].toLowerCase() +', <b>consultas:</b> ' + splitResult[10] +'/'+ splitResult[11] +' <b>estatus:</b> '+ splitResult[13] +'</p>'
+    }
+
+    if (splitResult[7] != "Aprobado" && splitResult[13] == "Aprobado" ) {
+        inputshtml= '<div id="id_inputs"><input id="patient_id" name="patient_id" type="text" value="'+ splitResult[0] +'" hidden /><input id="doctor_id" name="doctor_id" type="text" value="'+ splitResult[1] +'" hidden /><input id="plan_id" name="plan_id" type="text" value="'+ splitResult[12] +'" hidden /><input type="submit"  value="Aceptar" style="background: #039BE5; color:white; height: 40px; width:20%; border:none; border-radius: 10px;"/></div>';
+        titlehtml = '<h4 style="font-family: FuturaStd bold" id="idTitle">Seguro que desea iniciar una consulta</h4>';
+        messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium">Recuerde que al finalizar la consulta, la misma sera descontada de su plan activo (Aprobado).';
+        messagehtml = messagehtml + ' Datos del plan:<br><br> <b>plan:</b> ' + splitResult[2] +', <b>tipo de plan:</b> '+ splitResult[3].toLowerCase() +', <b>consultas:</b> ' + splitResult[4] +'/'+ splitResult[5] +' <b>estatus:</b> '+ splitResult[7] + ' <br>'
+        messagehtml = messagehtml + '<b>plan:</b> ' + splitResult[8] +', <b>tipo de plan:</b> '+ splitResult[9].toLowerCase() +', <b>consultas:</b> ' + splitResult[10] +'/'+ splitResult[11] +' <b>estatus:</b> '+ splitResult[13] +'</p>'
+    }
+
+    if (splitResult[7] != "Aprobado" && splitResult[13] != "Aprobado" ) {
+        inputshtml= '<div id="id_inputs"></div>';
+        titlehtml = '<h4 style="font-family: FuturaStd bold" id="idTitle">Debe adquirir un nuevo plan</h4>';        messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium">Recuerde que al finalizar la consulta, la misma sera descontada de su plan activo (Aprobado).';
+        messagehtml = '<p id="idMessage" style="font-family: FuturaStd Medium">Usted no cuenta con un plan de consultas médicas particular o por seguro activo actualmente.<b> Por favor dirijase a la sección de suscripciones para adquirir un nuevo plan.</b></p>'
+    }
+
+    $("#id_inputs").html(inputshtml);
+    $("#id_title").html(titlehtml);
+    $("#id_message").html(messagehtml);
+    $("#id_select").html(select_plan_p  + select_plan_s );
+
+  
+  }
+
+</script>
+
+<script>
+    function setPlan() {
+        var radios = document.getElementsByName('type_plan');
+        for (var i = 0, length = radios.length; i < length; i++){
+            if (radios[i].checked)
+            {
+            $("#plan_id").html('<input id="plan_id" name="plan_id" type="text" value="'+ radios[i].value +'" />');
+            break;
+         }
+    }
+}
+
+</script>

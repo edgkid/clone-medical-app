@@ -1,0 +1,86 @@
+<ul  id="slide-out" class="sidenav sidenav-fixed" style="background: #f8f8f9;">
+    <li>  
+        <div class="user-view" style=" heigth: 100%; background: #2196f3; height: 65px;" >   
+            <%= render partial: 'menu/logo_menu' %>
+        </div>
+    </li>
+    <li>
+      <div class="user-view">
+         <span class=" grey-text name">
+            <p style="font-family: FuturaStd Medium; color: #868383;">Convenio</p>
+          </span>
+          <span class=" grey-text email" style="font-family: FuturaStd Medium; color: #868383;"> <%= current_user.email %></span>
+      </div>
+     
+    </li>
+    <li><div class="divider"></div></li>
+    <li>
+        <a href="/">
+            <i class="material-icons">
+                <%= image_tag("icons/ic_dashboard.svg", :alt => "rss feed", style:"width: 25px;") %>
+            </i>
+            Inicio
+        </a>
+    </li>
+    <li>
+        <a href="/perfilC">
+            <i class="material-icons">
+                <%= image_tag("icons/ic_permissions.svg", :alt => "rss feed", style:"width: 25px;") %>
+            </i>
+            Perfil
+        </a>
+    </li>
+    <li>
+        <a href="/cambiar-password">
+            <i class="material-icons">lock_outline</i>
+            Cambiar contraseña
+        </a>
+    </li>
+    <% if current_user.doctor%>
+        <li>
+            <a href="/administracion/plans">
+                <i class="material-icons">credit_card</i>
+                Administrar Suscripciones
+            </a>
+        </li>
+    
+        <li>
+            <a  class="collapsible-list" style=" background: #f8f8f9; color: #424242;">        
+                <i class="material-icons" style="color: #848484;">devices_other</i>
+                Administración
+            </a>
+            <div class="content-list">
+                <ul>
+                    <li>
+                        <a href="/administracion/carga-masiva">
+                            <i class="material-icons">upload</i>
+                            Cargar Pacientes
+                        </a>
+                    </li>
+                    <!--<li>
+                    <a href="/admin-users">
+                        <i class="material-icons">person</i>
+                        Crear un usuario
+                    </a>
+                    </li>-->
+                    <li>
+                    <a href="/admin-patients">
+                    <i class="material-icons">
+                        <%= image_tag("icons/ic_patient.svg", :alt => "rss feed", style:"width: 25px;") %>
+                    </i>
+                        Crear un paciente
+                    </a>
+                    </li>
+                </ul>
+
+            </div>
+        </li>
+    <% end %>
+    <li style="margin-top:10%;">
+        <%= link_to destroy_user_session_path, method: :delete, style:"font-family: FuturaStd bold;" do %>
+            <i class="material-icons">exit_to_app</i>
+            Salir
+        <% end %>
+    </li>
+
+</ul>

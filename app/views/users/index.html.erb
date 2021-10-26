@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col s12 m12">
+      <div class="card" style="width: 96%; margin-left: 2%; margin-right:2%; margin-top:2%;">
+        <div class="card-header">
+            <h6 style="margin-left:2%; margin-top:2%; font-family: FuturaStd Medium;">Usuarios de sistema</h6>
+        </div>
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 m10"></div>
+                <div class="col s12 m2">
+                    <a style=" margin-bottom: 0px;" href="/admin-users/new">
+                    <i class="material-icons">add_circle</i>
+                    Usuario
+                    </a>
+                </div>
+            </div>
+
+            <table id="DataTableId" class="table table-striped table_app_style" style="width: 96%; margin-left:2%; margin-right:2%;">
+                <thead>
+                    <tr>
+                        <th scope="col" style="font-family: FuturaStd Medium;">Usuario</th>
+                        <th scope="col" style="font-family: FuturaStd Medium;">Estatus</th>
+                        <th scope="col" style="font-family: FuturaStd Medium;">Asignado</th>
+                        <th scope="col" style="font-family: FuturaStd Medium;">Fecha de creación</th>
+                        <th scope="col" style="font-family: FuturaStd Medium;">Acciones</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    <% if @users != nil%>
+                        <% @users.each do |user|%>
+                            <tr>
+                                <td style="font-family: FuturaStd Medium;"><%= user.email  %></td>
+                                <td style="font-family: FuturaStd Medium;"><%= user.status  %></td>
+                                <td style="font-family: FuturaStd Medium;">
+                                    <% if user.doctor || user.patient %>
+                                        Si
+                                    <% else %>
+                                        No                                    
+                                    <% end %>
+                                </td>
+                                <td style="font-family: FuturaStd Medium;"><%= user.created_at.strftime("%d-%m-%Y %H:%M")  %></td>
+                                <td style="font-family: FuturaStd Medium;">
+                                    <a style=" margin-bottom: 10px;" href="/admin-users/edit/<%= user.id  %>">
+                                        <i class="material-icons">edit</i>
+                                        Editar
+                                    </a>
+                                </td>
+                            </tr>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

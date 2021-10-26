@@ -1,0 +1,309 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face { 
+    font-family: "Futura STD Bold"; font-display: swap;  
+    src: font-path("FuturaStd-Bold.otf") format("opentype"); 
+    /* src: url("https://res.cloudinary.com/dngwlu3qa/raw/upload/v1626544383/FuturaStd-Bold_gecl3u.otf")   format("opentype");  */
+}
+@font-face { 
+    font-family: "Futura STD Medum"; 
+    font-display: swap;
+    src: font-path("FuturaStd-Medium.otf") format("opentype");
+    /* src: url("https://res.cloudinary.com/dngwlu3qa/raw/upload/v1626544385/FuturaStd-Medium_dcny6n.otf")  */
+    /* format("opentype");  */
+}  
+
+body {
+    margin: 0;
+    font-family: 'Futura STD Medum',Helvetica,Arial,Lucida,sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.send-button {
+    background: none;
+    border: none;
+}
+
+nav {
+    background-color: #0259b8 !important
+}
+
+header, main, footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+    .message-textarea {
+        position: fixed;
+    }
+
+}
+
+.user-view > .background{
+    display: flex;
+}
+.user-view > div > .brand-logo > img {
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+input, textarea, select {
+    outline: none;
+}
+
+// video, #remote-video-container {
+//     width: 0;
+//     height: 0;
+// }
+
+@media only screen and (min-width : 992px) {
+    .img-chat {
+        max-width: 250px !important;
+    }
+
+}
+
+
+.attach-field::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.attach-field {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+}
+.attach-field::before {
+    content: 'attach_file';
+    // display: inline-block;
+    background: transparent;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+    text-shadow: none;
+    font-weight: 700;
+    font-size: 10pt;
+
+
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+// .attach-field:hover::before {
+//     border-color: black;
+// }
+.attach-field:active::before {
+    background: transparent;
+}
+
+
+label > input[type=search] {
+    width: 90% !important;
+}
+
+#DataTableId_filter > label > input {
+    height: 30px;
+
+}
+
+table {
+    border-bottom: 0 !important;
+}
+
+tr {
+    padding: 0 !important;
+}
+
+/*estilos de app*/
+
+element.style {
+    width: 100%;
+  }
+
+    .style_logo{
+        width: 80px;
+        height: 40px;
+    }
+
+    .textarea_style{
+      border-radius:10px
+    }
+
+    .submit_style{
+      width: 100%;
+      background:#039be5;
+      border: none;
+      color: white;
+      border-radius:5px;
+      height: 40px;
+    }
+
+    .submit_style_print{
+      width: 100%;
+      background:#CB3234;
+      border: none;
+      color: white;
+      border-radius:5px;
+      height: 40px;
+    }
+
+    @font-face {
+      font-family: "FuturaStd bold";
+      src: url(/assets/FuturaStd-Bold.otf) format("truetype");
+    }
+
+    @font-face {
+      font-family: "FuturaStd Medium";
+      src: url(/assets/FuturaStd-Medium.otf) format("truetype");
+    }
+
+    li {
+      font-family: "FuturaStd Medium";
+    }
+
+    h5{
+      font-family: "FuturaStd Medium";
+    }
+
+    th, td{
+
+      padding: 5px 5px;
+      display: table-cell;
+      text-align: left;
+      vertical-align: middle;
+      border-radius: 2px;
+
+    }
+
+    .card-header{
+      padding: 2px;
+      border-radius: 0 0 2px 2px;
+      font-family: FuturaStd bold;
+    }
+
+    .table_app_style{
+      width:90%;
+      margin-left:-5%;
+
+    }
+
+    .field-set-style{
+      border-radius: 5px; 
+      color: #A09E9E; 
+      border: 1px solid #A09E9E;
+    }
+
+    .legend-style{
+      font-family: FuturaStd Medium;
+    }
+
+    .select-wrapper input.select-dropdown {
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      height: 100%;
+      line-height: 3rem;
+      width: 100%;
+      font-size: 16px;
+      margin: 0 0 8px 0;
+      padding: 0;
+      display: block;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      z-index: 1;
+  }
+
+  .field-set-style-correcto {
+    border-radius: 5px; 
+    color: #5DB136; 
+    border: 1px solid #5DB136
+  }
+
+  .field-set-style-incorrecto {
+    border-radius: 5px; 
+    color: #C50000; 
+    border: 1px solid #C50000
+  }
+
+  .collapsible-list {
+    background-color: #f8f8f9;
+    color: rgba(0,0,0,0.87);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+
+
+  .active {
+    background-color: #f8f8f9;
+  }
+
+  .content-list {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f8f8f9;
+  }
+  .select2-container--default.select2-container--focus .select2-selection--multiple {
+      border: none;        outline: 0;
+  }
+  .select2-container--default .select2-selection--multiple {
+      background-color: white;
+      border: none;
+      cursor: text;
+      position: relative;
+  }
+  element.style {
+    margin-left: 0%;
+  }
+
+  .card .card-content {
+      padding: 10px;
+      border-radius: 0 0 2px 2px;
+  }
+
+  .sidenav li{
+    line-height: 0px;
+  }

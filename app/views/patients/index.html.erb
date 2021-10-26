@@ -1,0 +1,90 @@
+<!--<div class="card" style="width: 96%; margin-left:2%; margin-rigth: 2%; margin-top: 5%; background: #F8F8F8;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col s12 m12"style="padding: 0;">
+          <div style="width: 100%; height: 100%;">
+            <div style=" font-family: FuturaStd Medium; width:90%; margin-left:3%; margin-right:7%; font-size: medium;">
+              <p><b>Recuerde; </b>&nbsp;usted podra realizar el pago de su plan a travez de las siguientes cuentas</p>
+              <table style=" font-family: FuturaStd Medium; border: none;">
+                <thead>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr style=" border: inset 0pt">
+                    <td>Banco Banesco</td>
+                    <td>Cuenta Corriente</td>
+                    <td>Cuenta: 1340860298603004293</td>
+                    <td>Clínica IDET C.A</td>
+                    <td>Rif: J-302247519</td>
+                  </tr>
+                  <tr style=" border: inset 0pt">
+                    <td>Banco Mercantil</td>
+                    <td>Cuenta Corriente</td>
+                    <td>Cuenta: 01050658111658003888</td>
+                    <td>Clínica IDET C.A</td>
+                    <td>Rif: J-302247519</td>
+                  </tr>
+                  <tr style=" border: inset 0pt">
+                    <td>Banesco Panamá</td>
+                    <td>Coordenadas: Banesco Panamá</td>
+                    <td>Cuenta: 110000086567</td>
+                    <td>Código SWIFT (BIC): BANSPAPAXXX</td>
+                    <td>Dirección: Av. Aquilino de la guardia y calle 47, Torre banesco, apartado 0823-0599</td>
+                  </tr>
+                  <tr style=" border: inset 0pt">
+                    <td>Zelle</td>
+                    <td>idetgroup1992@gmail.com</td>
+                    <td>IDET Group LLC</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>    
+              </table>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>-->
+
+<%if current_user.patient%>
+
+    <div class="row">
+        <div class="col s12 m12">
+            <%= render 'edit', object: @user%>
+        </div>
+    </div>
+   
+   <div class="row">
+        <div class="col s12 m12">
+            <div class="col s12 m12">
+                <% if @user.patient%>
+                    <%= render 'table', object: @user%>
+                <%end%>
+            </div>            
+        </div>
+    </div>
+
+<%else %>
+
+    <div class="row">
+        <div class="col s12 m12">
+            <%= render 'new'%>
+        </div>
+        <div class="col s12 m12">
+            <div class="col s12 m12">
+                <% if @user.patient%>
+                    <%= render 'table', object: @user%>
+                <%end%>  
+            </div>            
+        </div>
+    </div>
+
+<%end %>
+
+

@@ -1,0 +1,96 @@
+<div class="card" style="width: 60%; margin-left:20%; margin-right:20%; margin-top:10%;">
+    <div class="card-header">
+        <h6 style="margin-left:2%; font-family: FuturaStd Medium;">Nuevo Registro Publicidad</h6>
+        <div class="row">
+            <div class="col s12 m12">
+                <%= form_with model: @offer,url: "/publicidad/update/" + @offer.id.to_s, method: :post, id: "formulario" do  |form| %>
+                    <%= csrf_meta_tags %>
+
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id="group_code_offer">
+                                <legend class="legend-style">Código</legend>
+                                <%= form.text_field :code_offer, value: @offer.code_offer, style:"height: 100%; padding:none; border-bottom: none;" %>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id="group_description">
+                                <legend class="legend-style">Descripcion</legend>
+                                <%= form.text_field :description, value: @offer.description, style:"height: 100%; padding:none; border-bottom: none;" %>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style">
+                                <legend class="legend-style">Estatus</legend>
+                                <%= select_tag "status", options_for_select(["Activo" ,"Inactivo" ], @offer.status), style:"height: 100%; padding:none; border-bottom: none;"%>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <input type="file" id="filePicker" class="form-control">
+                        </div>
+                    </div>
+                   
+                    <input id="test" type="text" name="image" value="<%= @offer.image%>" >
+
+                    <div class="row">                     
+                        <div class="col s12 m6"></div>
+                        <div class="col s12 m3">
+                            <a href="/publicidad" class="btn" style="background:#E5E5E5; color: black; margin-bottom: 10px; border 1px solid black; width: 80%; font-family: FuturaStd Medium;">
+                                    Volver
+                            </a>
+                        </div>
+                        <div class="col s12 m3">
+                            <%= form.submit 'Guardar', class:'submit_style', style:"color: white;"%>
+                            
+                        </div>
+                        
+                    </div>
+
+
+                 <%end%>       
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var handleFileSelect = function(evt) {
+        var files = evt.target.files;
+        var file = files[0];
+
+        if (files && file) {
+            var reader = new FileReader();
+
+            reader.onload = function(readerEvt) {
+                var binaryString = readerEvt.target.result;
+                var fileending = file.type;
+                if(fileending == "image/jpeg")
+                {
+                    fileending = "image/jpg";
+                }
+                var test = btoa(binaryString);
+                var final = "data:"+fileending+";base64,"+test;
+                //document.getElementById("img_preview").src = final
+                document.getElementById("test").value = final
+                //document.getElementById("user_picture").value = final
+            };
+
+            reader.readAsBinaryString(file);
+        }
+    };
+
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+        document.getElementById('filePicker').addEventListener('change', handleFileSelect, false);
+    } else {
+        alert('The File APIs are not fully supported in this browser.');
+    }
+</script>

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col s12 m12">
+        <div style="width: 96%; margin-left: 2%; margin-right: 2%">
+            <ul class="collapsible"> 
+                <li>
+                    <div class="collapsible-header">
+                    <i class="material-icons">pie_chart</i>
+                            <p style="font-family: FuturaStd Medium; padding:0px;">Pacientes Asegurados vs Particulares</p>
+                    </div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <%= pie_chart(particulares: @totalPatients[:pie_particular].to_i, asegurados: @totalPatients[:pie_secure].to_i)%>
+                            </div>
+                            <div class="col s12 m6">
+                                <div style = "margin-top:10%">
+                                    <p style="font-family: FuturaStd Medium"><b>Total de pacientes:</b> <%= @totalPatients[:pie_total]%> <b>(<%= @totalPatients[:pie_por_particular].to_i + @totalPatients[:pie_por_secure].to_i %>)%</b></p>    
+                                    <p style="font-family: FuturaStd Medium"><b>Pacientes asegurados:</b> <%= @totalPatients[:pie_secure]%> <b>(<%= @totalPatients[:pie_por_secure]%>)%</b></p>    
+                                    <p style="font-family: FuturaStd Medium"><b>Pacientes particulares:</b> <%= @totalPatients[:pie_particular]%> <b>(<%= @totalPatients[:pie_por_particular]%>)%</b></p>
+                                </div> 
+                                <a href="/statistics-particulares-vs-asegurados">Mostrar Detalle</a>   
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

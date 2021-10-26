@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+@font-face {
+  font-family: "Futura STD Bold";
+  font-display: swap;
+  src: "/assets/FuturaStd-Bold-fb7ec3d64b12b3d2e1a41b14571606612878dad263e0de2b34268ce362afbb38.otf" format("opentype");
+  /* src: url("https://res.cloudinary.com/dngwlu3qa/raw/upload/v1626544383/FuturaStd-Bold_gecl3u.otf")   format("opentype");  */
+}
+
+@font-face {
+  font-family: "Futura STD Medum";
+  font-display: swap;
+  src: "/assets/FuturaStd-Medium-741b9a590a4b54a0dc1b7d2ee41ae19da954b65ec867a8e1153b2e33f639deee.otf" format("opentype");
+  /* src: url("https://res.cloudinary.com/dngwlu3qa/raw/upload/v1626544385/FuturaStd-Medium_dcny6n.otf")  */
+  /* format("opentype");  */
+}
+
+/* line 30, app/assets/stylesheets/application.scss */
+body {
+  margin: 0;
+  font-family: 'Futura STD Medum',Helvetica,Arial,Lucida,sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* line 37, app/assets/stylesheets/application.scss */
+.send-button {
+  background: none;
+  border: none;
+}
+
+/* line 42, app/assets/stylesheets/application.scss */
+nav {
+  background-color: #0259b8 !important;
+}
+
+/* line 46, app/assets/stylesheets/application.scss */
+header, main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+  /* line 51, app/assets/stylesheets/application.scss */
+  header, main, footer {
+    padding-left: 0;
+  }
+  /* line 54, app/assets/stylesheets/application.scss */
+  .message-textarea {
+    position: fixed;
+  }
+}
+
+/* line 60, app/assets/stylesheets/application.scss */
+.user-view > .background {
+  display: flex;
+}
+
+/* line 63, app/assets/stylesheets/application.scss */
+.user-view > div > .brand-logo > img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+/* line 69, app/assets/stylesheets/application.scss */
+input, textarea, select {
+  outline: none;
+}
+
+/*# sourceMappingURL=application.css-ecb369ae93874c6d8ee653d6dc84a780a77320231e73b0a3f60875f9410c3371.map */

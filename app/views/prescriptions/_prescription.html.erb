@@ -1,0 +1,13 @@
+
+<div style="width:90%; margin-left:5%; margin-rigth:5%">
+<%= form_with model: @prescription, url: 'doctor/prescription' do |form| %>
+    <%= csrf_meta_tags %>
+    <%= form.label :age_child, "Medicamentos" %>
+    <%= form.text_area :medicine, size: "60x30", class: 'textarea_style' %>
+
+    <%= form.label :age_child, "Métodos" %>
+    <%= form.text_area :use, size: "60x30", class: 'textarea_style' %>
+
+    <%= form.submit 'Guardar', class: 'submit_style' %>
+<% end %>
+</div>

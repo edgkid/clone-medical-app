@@ -1,0 +1,35 @@
+<%if current_user.doctor%>
+    
+    <div class="row">
+        <div class="col s12 m12">
+            <%= render 'edit', object: @user%>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12" style="padding: 0;">
+            <div class="col s12 m12"style="padding: 0;">
+                <% if @user.doctor%>
+                    <% render 'table', object: @user%> 
+                <%end%>  
+            </div>            
+        </div>
+    </div>
+<%else %>
+
+    <div class="row">
+        <div class="col s12 m12">
+            <%= render 'new'%>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m12"style="padding: 0;">
+            <div class="col s12 m12"style="padding: 0;">
+                <% if @user.doctor%>
+                    <%= render 'table', object: @user%> 
+                <%end%>     
+            </div>            
+        </div>
+    </div>
+
+<%end %>

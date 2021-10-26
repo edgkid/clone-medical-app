@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col s12 m12">
+      <div class="card" style="width: 100%; margin-top:5%;">
+        <div class="card-header">
+            <h6 style="margin-left:1%; ">Asigne un Seguro al Paciente</h6>
+        </div>
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 m6">
+                    <p style="font-family: FuturaStd Medium"><b>usuario:</b> <%= @patient.user.email%></p>
+                    <br>
+                    <p style="font-family: FuturaStd Medium"><b>Paciente:</b> <%= @patient.name + " " + @patient.last_name%> </p>
+                    <p style="font-family: FuturaStd Medium"><b>Documento:</b> <%= @patient.document%> </p>
+                    <p style="font-family: FuturaStd Medium"><b>Teléfono:</b> <%= @patient.phone%> </p>
+                    <%if @patient.birthday != nil %>
+                        <p style="font-family: FuturaStd Medium"><b>Edad:</b> <%= Date.today.year - @patient.birthday.year%></p>  
+                    <%else%>
+                        <p style="font-family: FuturaStd Medium"><b>Edad:</b> 0</p>  
+                    <%end%>
+                      
+                    <p style="font-family: FuturaStd Medium"><b>Sexo:</b> <%= @patient.gender%> </p>
+
+                    <br>
+                    <p style="font-family: FuturaStd Medium"><b>Fecha de creación:</b> <%= @patient.created_at.strftime("%d-%m-%Y %H:%M")  %> </p>
+                    <p style="font-family: FuturaStd Medium"><b>Esatus:</b> <%= @patient.status%></p>
+
+                </div>
+
+                <div class="col s12 m6">
+                    <p style="font-family: FuturaStd Medium">Nueva aseguradora</p>
+                     <%= form_with model: @insutredPatient, id: "formulario", url: '/indicar-seguro/save', method: :post  do|form| %>
+                        <%= csrf_meta_tags %>
+
+                        <% if @patient.insured_patients.length == 0 %>
+                            <div class="row">
+                                <div class="col s12 m12">
+                                    <fieldset class="field-set-style" id="group_address">
+                                        <legend class="legend-style" >Seguro</legend>
+                                        <%= form.select :insurance_id, options_from_collection_for_select(@insurances, "id", "name"), prompt: "Selecciona un seguro", style:"height: 100%; padding:none; border-bottom: none;" %>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s12 m12">
+                                    <fieldset class="field-set-style" id="group_address">
+                                        <legend class="legend-style" >Código de seguro</legend>
+                                        <%= form.text_field :code, placeholder: 'Códigod de seguro', style:"height: 100%; padding:none; border-bottom: none;" %>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s3 m6"></div>
+                                <div class="col s12 m3">
+                                    <a href="/indicar-seguro" class="btn" style="background:#E5E5E5; color: black; margin-bottom: 10px; border 1px solid black; width: 90%">
+                                        Volver
+                                    </a>
+                                </div>
+                                <div class="col s9 m3">
+                                    <%= form.submit 'Guardar', class: 'submit_style btn'%>
+                                </div>
+                            </div>
+
+                        <% else %>
+
+                            <div class="row">
+                                <div class="col s12 m12">
+                                    <fieldset class="field-set-style" id="group_address">
+                                        <legend class="legend-style" >Seguro</legend>
+                                        <%= form.text_field :code, style:"height: 100%; padding:none; border-bottom: none;", value:  @patient.insured_patients[0].insurance.name, disabled: true %>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s12 m12">
+                                    <fieldset class="field-set-style" id="group_address">
+                                        <legend class="legend-style" >Código de seguro</legend>
+                                        <%= form.text_field :code, style:"height: 100%; padding:none; border-bottom: none;", value:  @patient.insured_patients[0].code, disabled: true  %>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                        <% end %>
+
+                        
+
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<%=%>

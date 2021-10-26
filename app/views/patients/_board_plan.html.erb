@@ -1,0 +1,37 @@
+<div style="width: 96%; margin-left: 2%; margin-right: 2%">
+    <ul class="collapsible"> 
+        <li>
+            <div class="collapsible-header">
+                <i class="material-icons">add_box</i>
+                    <p style="font-family: FuturaStd Medium; padding:0px;">Último Plan Adquirido</p>
+                </div>
+            <div class="collapsible-body">
+                <%if @patient_plan[0]%>
+                     <div class="row">
+                        <div class="col s12 m6">
+
+                            <p style="font-family: FuturaStd Medium"><b>Plan <%= @patient_plan[0].plan.name%></b></p>
+                            <p style="font-family: FuturaStd Medium"><b>Fecha:</b> <%= @patient_plan[0].created_at.strftime("%d-%m-%Y %H:%M")  %> </p>
+                            <p style="font-family: FuturaStd Medium"><b>Estatus:</b> <%= @patient_plan[0].status %> </p>
+                            
+                        </div>
+                        <div class="col s12 m6">
+
+                            <br>
+                            <p style="font-family: FuturaStd Medium"><b>Total de consultas:</b> <%= @patient_plan[0].plan.total_appointments %> </p>
+                            <p style="font-family: FuturaStd Medium"><b>Consultas restantes:</b> <%= @patient_plan[0].count %> </p>
+                            
+                        </div>
+                    </div>
+                <% else %>
+                    <div class="row">
+                        <div class="col s12 m6">
+                            <p style="font-family: FuturaStd Medium"><b>No posee un plan de suscripción</b></p>
+                        </div>
+                    </div>
+                <% end %>
+               
+            </div>
+        </li>
+    </ul>
+</div>

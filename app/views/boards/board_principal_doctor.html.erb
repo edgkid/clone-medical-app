@@ -1,0 +1,16 @@
+<%- if current_user.doctor%>
+    <%= render 'filters/filter_date_for_grafics', object: @doctor_appointments%> 
+    <%= render 'grafics/insured_patient_vs_particular', object: @totalPatients %> 
+    <%= render 'grafics/patient_by_area', object: @patients_per_areas %> 
+    <%= render 'grafics/patient_by_diagnostic', object: @patient_per_diagnostic %> 
+    <%= render 'grafics/patient_by_insurance', object: @patients_by_insurance %> 
+    <%= render 'grafics/patient_by_doctors', object: @patients_by_doctors %>  
+       
+<%else %>
+    <nav style="background: #EE6E73; width: 80%; margin-left: 10%; margin-right: 10%">
+        <div class="nav-wrapper" style="background: #EE6E73;">
+            <p style="text-align:center; color:#039be5; font-family: FuturaStd bold; color: white;"> Cargue su información de perfil antes de continuar.</p>
+        </div>
+  </nav>
+<%end %>
+

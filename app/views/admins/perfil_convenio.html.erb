@@ -1,0 +1,15 @@
+<%if current_user.doctor%>
+    
+    <div class="row">
+        <div class="col s12 m12">
+            <%= render 'other_perfil/edit_perfil_convenio', object: @user%>
+        </div>
+    </div>
+<%else %>
+
+    <div class="row">
+        <div class="col s12 m12">
+            <%= render 'other_perfil/new_perfil_convenio'%>
+        </div>
+    </div>
+<%end %>

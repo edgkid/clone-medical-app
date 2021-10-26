@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card"style="margin-top:2%; width:96%; margin-left:2%; margin-right:2%;">
+      <div class="card-header">
+          <h6 style="margin-left:1%; margin-top:1%; font-family: FuturaStd Medium;">Enfermedades o Diagnósticos</h6>
+           <div class="row">
+            <div class="col s12 m8"></div>
+            <div class="col s12 m2"> 
+              <a class=" modal-trigger" style=" margin-bottom: 10px;" href="/enfermedades/crear">
+                <i class="material-icons">add_circle</i>
+                Diagnóstico
+              </a>
+            </div>
+            <div class="col s12 m2"> 
+              <a class=" modal-trigger" style=" margin-bottom: 10px; color: #29C80A;" href="/enfermedades/carga-masiva">
+                <i class="material-icons">file_upload</i>
+                Carga Masiva
+              </a>
+            </div>
+          </div>
+      </div>
+      <div class="card-content">
+        <table id="DataTableId" style="width:100%">
+            <thead>
+              <tr>
+                <th scope="col" style="font-family: FuturaStd Medium;">ID</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Código</th>
+                <th scope="col" style="font-family: FuturaStd Medium;">Dedcripción</th>
+                <th scope="col" style="font-family: FuturaStd Medium;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @diagnostics.each do |diagnostic| %>
+                <tr>
+                  <td style="font-family: FuturaStd Medium;"><%= diagnostic.id  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= diagnostic.diagnostic_code  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= diagnostic.diagnostic_des  %></td>
+                  <td style="font-family: FuturaStd Medium;">
+                    <a class=" modal-trigger" style=" margin-bottom: 10px;" href="/enfermedades/edit/<%= diagnostic.id  %>">
+                      <i class="material-icons">edit</i>
+                      Editar
+                    </a>
+                  </td>
+                </tr>
+              <% end %>                
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col s12 m12"style="padding: 0; margin-left:5%">
+                                
+        <div style="width:90%; margin-top:5%; margin-bottom: 5%">
+            <% if @plan %>
+                <%= form_with url: "planm/edit/" + @plan.id.to_s, method: :post, id: 'formulario' do |form| %>
+                    <%= csrf_meta_tags %>
+
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <%= form.text_field :id, value: @plan.id, hidden: true %>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" style="text-align:left">
+                                <legend class="legend-style">Banco</legend>
+                                <% @banks = Bank.all %>
+                            <%= form.select :bank_id, options_from_collection_for_select(@banks, "id", "name"), prompt: "Seleccione un banco", style:"height: 100%; padding:none; border-bottom: none;" %>  
+                            </fieldset>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" style="text-align:left">
+                                <legend class="legend-style">Tipo de pago</legend>
+                                <%= select_tag "payment_type", options_for_select([ "Transferencia", "Deposito", "Pago movil" ], "Indique tipo de pago"), style:"height: 100%; padding:none; border-bottom: none;" %>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id="group_reference_number" style="text-align:left">
+                                <legend class="legend-style">Número de referencia</legend>
+                                <%= form.text_field :reference_number, placeholder: 'Número de referencia', style:"height: 100%; padding:none; border-bottom: none;"  %>
+                            </fieldset>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col s12 m9">
+                        </div>
+                        <div class="col s12 m3">
+                            <%= form.submit 'Registrar', class: 'submit_style btn'%>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+            
+        </div>
+
+    </div> 
+</div>
+
+

@@ -1,0 +1,64 @@
+<%- if current_user.doctor%>
+    <%= render 'filters/filter_date_for_convenio', object: @doctor_appointments%> 
+    <%= render 'grafics/insured_patient_vs_particular', object: @totalPatients %>
+    <div class="row">
+        <div style="width: 96%; margin-left:2%; margin-rigth:2%;">
+            <div class="col s12 m6" style="width: 48%;">
+                <ul class="collapsible"> 
+                    <li>
+                        <div class="collapsible-header">
+                        <i class="material-icons">file_upload</i>
+                                <p style="font-family: FuturaStd Medium; padding:0px;">Última Carga Realizada</p>
+                        </div>
+                        <div class="collapsible-body">
+                            <% if @patients.length > 0 %>
+                                <p style="font-family: FuturaStd Medium; padding:0px;">Registros Procesados: <%= @patients.length %></p>
+                                <p style="font-family: FuturaStd Medium; padding:0px;">fecha: <%= @patients[0].created_at.strftime("%d/%m/%Y") %> </p>
+                            <% else %>
+                                No existen registros de carga masiva procesados
+                            <% end %>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="col s12 m6" style="width: 50%;">
+                <ul class="collapsible"> 
+                    <li>
+                        <div class="collapsible-header">
+                        <i class="material-icons">file_upload</i>
+                            <p style="font-family: FuturaStd Medium; padding:0px;">Planes Activos</p>
+                        </div>
+                        <div class="collapsible-body">
+                            <% if @plans.length > 0 %>
+
+                                <table class="striped">
+                                    <% @plans.each do |plan| %>
+                                        <tr>
+                                            <td><%= plan.name %></td>
+                                            <td><%= plan.cost %> $</td>
+                                        </tr>
+                                    <% end %>
+                                </table>
+                            <% else %>
+                                No exiten registor de plan de suscripción
+                            <% end %>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+
+       
+<%else %>
+    <nav style="background: #EE6E73; width: 80%; margin-left: 10%; margin-right: 10%">
+        <div class="nav-wrapper" style="background: #EE6E73;">
+            <p style="text-align:center; color:#039be5; font-family: FuturaStd bold; color: white;"> Cargue su información de perfil antes de continuar.</p>
+        </div>
+  </nav>
+<%end %>
+
+
+

@@ -1,0 +1,127 @@
+<div class="row" >
+    <div class="col s12 m12">
+        <div class="card" style="width: 98%; margin-left:1%;">
+            <div class="card-content">
+            <h6 style="font-family: FuturaStd Medium; padding:0px;">Rsultado de corrida</h6>
+            </div>
+            <div class="card-content">
+                <div class="row" >
+                    <div class="col s12 m4">
+                        <p style="font-family: FuturaStd Medium; padding:0px;">Registros Proceados:<%= @doctors.length %> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m4">
+
+        <ul class="collapsible" style="width:96%; margin-left:2%; margin-right:2%; margin-top: 5%;"> 
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">file_upload</i>
+                    <p style="font-family: FuturaStd Medium; padding:0px;">Cargar Médicos Eliminados Mediante CSV</p>
+                </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <%= form_with url: administracion_salvado_masiva_doctors_eliminados_path, method: :post do |f| %>
+
+                                <%= csrf_meta_tags %>
+
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <input type="file" id="filecsvDelete" class="form-control" accept=".csv" required>
+                                            <input id="file_name_delete" type="text" name="file_name" value="" hidden >
+                                            <input id="nameDelete" type="text" name="name" value="" hidden >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <%= f.submit "Iniciar carga de datos", class: "submit_style" %>
+                                        </div>
+                                    </div>
+
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col s12 m4">
+
+        <ul class="collapsible" style="width:96%; margin-left:2%; margin-right:2%; margin-top: 5%;"> 
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">file_upload</i>
+                    <p style="font-family: FuturaStd Medium; padding:0px;">Cargar Médicos Activos Mediante CSV</p>
+                </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <%= form_with url: administracion_salvado_masiva_doctors_active_path, method: :post do |f| %>
+
+                                <%= csrf_meta_tags %>
+
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <input type="file" id="filecsvActive" class="form-control" accept=".csv" required>
+                                            <input id="file_name_active" type="text" name="file_name" value="" hidden >
+                                            <input id="nameActive" type="text" name="name" value="" hidden >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <%= f.submit "Iniciar carga de datos", class: "submit_style" %>
+                                        </div>
+                                    </div>
+
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col s12 m4">
+
+        <ul class="collapsible" style="width:96%; margin-left:2%; margin-right:2%; margin-top: 5%;"> 
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">file_upload</i>
+                    <p style="font-family: FuturaStd Medium; padding:0px;">Cargar Médicos Nuevos Mediante CSV</p>
+                </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <%= form_with url: administracion_salvado_masiva_doctors_new_path, method: :post do |f| %>
+
+                                <%= csrf_meta_tags %>
+
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <input type="file" id="filecsvNew" class="form-control" accept=".csv" required>
+                                            <input id="file_name_new" type="text" name="file_name" value="" hidden >
+                                            <input id="nameNew" type="text" name="name" value=""  hidden >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <%= f.submit "Iniciar carga de datos", class: "submit_style" %>
+                                        </div>
+                                    </div>
+
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

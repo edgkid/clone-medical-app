@@ -1,0 +1,100 @@
+<ul class="collapsible" style="width:90%; margin-left:5%; margin-right:5%;"> 
+    <li>
+      <div class="collapsible-header">
+        <i class="material-icons">perm_identity</i>
+            <p style="font-family: FuturaStd Medium; padding:0px;">Datos de perfil</p>
+        </div>
+      <div class="collapsible-body">
+        <div class="row">
+            <div class="col s12 m12">
+                <div style="width:90%; margin-top:5%; margin-bottom: 5%">
+                    <%= form_with url: 'perfilB/save', method: :post, id: "formulario" do |form| %>
+                        <%= csrf_meta_tags %>
+
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <fieldset class="field-set-style" id= "group_name">
+                                    <legend class="legend-style">Primer nombre</legend>
+                                    <%= form.text_field :name, placeholder: 'Primer nombre', style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m6">
+                                <fieldset class="field-set-style" id= "group_middle_name">
+                                    <legend class="legend-style">Segundo nombre</legend>
+                                    <%= form.text_field :middle_name, placeholder: 'Segundo nombre', style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                            <div class="col s12 m6">
+                                <fieldset class="field-set-style" id= "group_last_name">
+                                    <legend class="legend-style">Primer apellido</legend>
+                                    <%= form.text_field :last_name, placeholder: 'Primer apellido', style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m6">
+                                <fieldset class="field-set-style" id= "group_surname">
+                                    <legend class="legend-style">Segundo apellido</legend>
+                                    <%= form.text_field :surname, placeholder: 'Segundo apellido', style:"height: 100%; padding:none; border-bottom: none;"  %>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s12 m5">
+                                <fieldset class="field-set-style" id= "group_document">
+                                    <legend class="legend-style">Cédula</legend>
+                                    <%= form.text_field :document, placeholder: 'Cédula o pasaporte', style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m5">
+                                <fieldset class="field-set-style" id= "group_phone">
+                                    <legend class="legend-style">Teléfono</legend>
+                                    <%= form.text_field :phone, placeholder: '0424#######', style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                            <div class="col s12 m2">
+                                <fieldset class="field-set-style">
+                                    <legend class="legend-style">Sexo</legend>
+                                    <%= select_tag "gender", options_for_select([ "M", "F" ]), {style:"height: 100%; padding:none; border-bottom: none;"}%>
+                                </fieldset>
+                            </div>
+    
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <fieldset class="field-set-style">
+                                    <legend class="legend-style">Fecha de nacimiento</legend>
+                                    <%= form.date_field :birthday, style:"height: 100%; padding:none; border-bottom: none;"  %>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                            <div class="col s12 m12">
+                                 <fieldset class="field-set-style" id= "group_address">
+                                    <legend class="legend-style">Dirección</legend>
+                                    <%= form.text_field :address, placeholder: 'Dirección', style:"height: 100%; padding:none; border-bottom: none;" %>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <%= form.text_field :user_id, value: @user.id, hidden: true %>
+                        <%= form.email_field :mail, value: @user.email, hidden: true %>
+
+                        <div class="row">
+                            <div class="col s12 m10"></div>
+                            <div class="col s12 m2"><%= form.submit 'Guardar', class: 'submit_style'%></div>
+                        </div>
+
+                    <% end %>
+                </div>
+            </div>
+        </div>
+      </div>
+    </li>
+</ul>

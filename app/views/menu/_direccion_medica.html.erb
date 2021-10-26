@@ -1,0 +1,127 @@
+<ul  id="slide-out" class="sidenav sidenav-fixed" style="background: #f8f8f9;">
+    <li>  
+        <div class="user-view" style=" heigth: 100%; background: #2196f3; height: 65px;" >   
+            <%= render partial: 'menu/logo_menu' %>
+        </div>
+    </li>
+    <li>
+      <div class="user-view">
+         <span class=" grey-text name">
+            <p style="font-family: FuturaStd Medium; color: #868383;">Dirección médica</p>
+          </span>
+          <span class=" grey-text email" style="font-family: FuturaStd Medium; color: #868383;"> <%= current_user.email %></span>
+      </div>
+     
+    </li>
+    <li><div class="divider"></div></li>
+    
+    <li>
+        <a href="/">
+            <i class="material-icons">
+              <%= image_tag("icons/ic_dashboard.svg", :alt => "rss feed", style:"width: 25px;") %>
+            </i>
+            Inicio
+        </a>
+    </li>
+    <li>
+        <a href="/perfilA">
+            <i class="material-icons">
+              <%= image_tag("icons/ic_permissions.svg", :alt => "rss feed", style:"width: 25px;") %>
+            </i>
+            Perfil
+        </a>
+    </li>
+    <li>
+        <a href="/cambiar-password">
+            <i class="material-icons">lock_outline</i>
+            Cambiar contraseña
+        </a>
+    </li>
+    <% if current_user.doctor %>
+      <li>
+          <a  class="collapsible-list" style=" background: #f8f8f9; color: #424242;">        
+              <i class="material-icons" style="color: #848484;">devices_other</i>
+              Administración
+          </a>
+          <div class="content-list">
+                <ul>
+                  <li>
+                    <a href="/administracion/carga-masiva-doctors">
+                      <i class="material-icons">upload</i>
+                      Cargar Médicos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/admin-create/doctor">
+                      <i class="material-icons">person</i>
+                      Crear Médico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/admin-doctors">
+                    <i class="material-icons">art_track</i>
+                      Adjutar Firma de Médico
+                    </a>
+                  </li>
+                </ul>
+          </div>
+      </li>
+      <li>
+        <a href="/enfermedades">
+          <i class="material-icons">grain</i>
+          Enfermedades
+        </a>
+      </li>
+      <li>
+        <a href="/admin-appointments">
+          <i class="material-icons">
+            <%= image_tag("icons/ic_forms.svg", :alt => "rss feed", style:"width: 25px;") %>
+          </i>
+          Historia Clínica
+        </a>
+      </li>
+      <li>
+        <a  class="collapsible-list" style=" background: #f8f8f9; color: #424242;">        
+              <i class="material-icons" style="color: #848484;">equalizer</i>
+              Estadísticas
+        </a>
+        <div class="content-list">
+          <ul>
+            <li>
+              <a href="/statistics-particulares-vs-asegurados">  
+                Asegurados / Particulares
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-diagnostico">
+                Pacientes por Diagnóstico
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-especialidad">
+                Pacientes por Especialidad
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-doctor">
+                Pacientes por Médico
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-aseguradora">
+                Pacientes por Seguro
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    <% end %>
+    
+    <li style="margin-top:10%;">
+        <%= link_to destroy_user_session_path, method: :delete, style:"font-family: FuturaStd bold;" do %>
+            <i class="material-icons">exit_to_app</i>
+            Salir
+        <% end %>
+    </li>
+
+</ul>

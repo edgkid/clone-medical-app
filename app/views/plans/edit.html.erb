@@ -1,0 +1,65 @@
+<div class="card" style="width: 60%; margin-left:20%; margin-right:20%; margin-top:10%;">
+    <div class="card-header">
+        <h6 style="margin-left:2%; font-family: FuturaStd Medium;">Editar registro de plan de suscripción</h6>
+        <div class="row">
+            <div class="col s12 m12">
+                <%= form_with  url: "/administracion/planss/edit/" + @plan.id.to_s, method: :post, id: "formulario" do |form| %>
+                    <%= csrf_meta_tags %>
+
+                    <div class="row">                     
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id="group_name">
+                                <legend class="legend-style">Plan de suscripción</legend>
+                                <%= form.text_field :name, value: @plan.name, style:"height: 100%; padding:none; border-bottom: none;" %>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">                     
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id="group_cost">
+                                <legend class="legend-style">Costo</legend>
+                                <%= form.text_field :cost, value: @plan.cost, style:"height: 100%; padding:none; border-bottom: none;" %>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">                     
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id="group_total_appointments">
+                                <legend class="legend-style">Total de citas</legend>
+                                <%= form.text_field :total_appointments, value: @plan.total_appointments, maxlength: 3, placeholder: 'Cantidad de citas ... #', style:"height: 100%; padding:none; border-bottom: none;" %>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">                     
+                        <div class="col s12 m12">
+                            <fieldset class="field-set-style" id="group_total_appointments">
+                                <legend class="legend-style">Tipo de Plan</legend>
+                                <%= select_tag "Tipe_plan", options_for_select(["Particular" ,"De Seguro" ]), style:"height: 100%; padding:none; border-bottom: none;"%>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                     <div class="row">
+                        <div class="col s12 m6"></div>
+                        <div class="col s12 m3">
+                            <a href="/administracion/plans" class="btn" style="background:#E5E5E5; color: black; margin-bottom: 10px; border 1px solid black; width: 80%; font-family: FuturaStd Medium;">
+                                    Volver
+                            </a>
+                        </div>
+                        <div class="col s12 m3">
+                            <%= form.submit 'Guardar', class:'submit_style', style:"color:white;"%>
+                        </div>                     
+                        
+                    </div>
+
+
+
+                    
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

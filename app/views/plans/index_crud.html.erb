@@ -1,0 +1,70 @@
+<div class="card" style="width: 96%; margin-left:2%; margin-right:2%; margin-top:2%;">
+  <div class="card-header">
+    <h6 style="margin-left:2%; margin-top:2%; font-family: FuturaStd Medium;">Suscripciones registradas en sistema</h6>
+    <div class="row">
+      <div class="col s12 m10"></div>
+      <div class="col s12 m2"> 
+        <a class=" modal-trigger" style=" margin-bottom: 10px;" href="/administracion/plans/create">
+          <i class="material-icons">add_circle</i>
+          Suscripción
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m12">
+
+      <div >
+
+        <table  id="DataTableId" >
+          <thead>
+            <tr>
+              <th scope="col" style="font-family: FuturaStd Medium;">Código</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Suscripción</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Costo</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Consultas</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Estatus</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Tipo de Plan</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Acciones</th>
+              <th scope="col" style="font-family: FuturaStd Medium;"></th>
+            </tr>
+          </thead>
+            <tbody>
+              <% @plans.each do |plan| %>
+                <tr>
+                  <td style="font-family: FuturaStd Medium;"><%= plan.code  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= plan.name  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= plan.cost  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= plan.total_appointments  %></td>
+                  <td scope="col" style="font-family: FuturaStd Medium;"><%= plan.status  %></td>
+                  <td scope="col" style="font-family: FuturaStd Medium;"><%= plan.type_plan  %></td>
+                  <td>
+                    <%= form_with url: "/administracion/plans/active/" + plan.id.to_s, method: :post do |form| %>
+
+                      <% if plan.status.upcase == 'Activo'.upcase%>
+                        <%= form.submit 'Inactivar', style:'border: none; background:white; color:#B40404; font-family: FuturaStd Medium;'%>
+                      <%else%>
+                        <%= form.submit 'Activar', style:'border: none; background:white; color:#039BE5; font-family: FuturaStd Medium;'%>
+                      <%end%>    
+                    <%end%>  
+                  </td>
+                  <td style="font-family: FuturaStd Medium;">
+                      <a style=" margin-bottom: 10px;" href="/administracion/plans/update/<%= plan.id  %>">
+                      <i class="material-icons">edit</i>
+                        Editar
+                    </a>
+                  </td>             
+                </tr>
+              <% end %>
+                                    
+            </tbody>
+        </table>
+
+      </div>
+
+      </div>
+    </div> 
+
+
+  </div>
+</div>

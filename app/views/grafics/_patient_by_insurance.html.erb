@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col s12 m12">
+        <div style="width: 96%; margin-left: 2%; margin-right: 2%">
+            <ul class="collapsible"> 
+                <li>
+                    <div class="collapsible-header">
+                    <i class="material-icons">show_chart</i>
+                            <p style="font-family: FuturaStd Medium; padding:0px;">Pacientes por Aseguradora</p>
+                    </div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <%= column_chart(@patients_by_insurance)%>
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="col s12 m10"></div>
+                            <div class="col s12 m2">
+                                <a href="/statistics-pacientes-por-aseguradora">Mostrar Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

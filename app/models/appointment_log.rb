@@ -1,0 +1,2 @@
+class AppointmentLog < ApplicationRecord
+end

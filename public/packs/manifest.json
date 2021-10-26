@@ -1,0 +1,24 @@
+{
+  "application.js": "/packs/js/application-1a7081512c9c1afd064c.js",
+  "application.js.map": "/packs/js/application-1a7081512c9c1afd064c.js.map",
+  "entrypoints": {
+    "packs/js/application": {
+      "js": [
+        "packs/js/application-1a7081512c9c1afd064c.js"
+      ],
+      "js.map": [
+        "packs/js/application-1a7081512c9c1afd064c.js.map"
+      ]
+    },
+    "service-worker": {
+      "js": [
+        "service-worker.js"
+      ],
+      "js.map": [
+        "service-worker.js.map"
+      ]
+    }
+  },
+  "service-worker.js": "/service-worker.js",
+  "service-worker.js.map": "/service-worker.js.map"
+}

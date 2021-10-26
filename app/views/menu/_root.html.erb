@@ -1,0 +1,203 @@
+<ul  id="slide-out" class="sidenav sidenav-fixed" style="background: #f8f8f9;">
+    <li>  
+        <div class="user-view" style=" heigth: 100%; background: #2196f3; height: 65px;" >   
+            <%= render partial: 'menu/logo_menu' %>
+        </div>
+    </li>
+    <li>
+      <div class="user-view">
+         <span class=" grey-text name">
+            <p style="font-family: FuturaStd Medium; color: #868383;">Administración</p>
+          </span>
+          <span class=" grey-text email" style="font-family: FuturaStd Medium; color: #868383;"> <%= current_user.email %></span>
+      </div>
+     
+    </li>
+    <li><div class="divider"></div></li>
+    <li>
+        <a href="/">
+        <i class="material-icons">
+            <%= image_tag("icons/ic_permissions.svg", :alt => "rss feed", style:"width: 25px;") %>
+        </i>
+            Inicio
+        </a>
+    </li>
+    <li>
+        <a href="/perfilR">
+            <i class="material-icons">
+                <%= image_tag("icons/ic_users.svg", :alt => "rss feed", style:"width: 25px;") %>
+            </i>
+            Perfil
+        </a>
+    </li>
+    <li>
+        <a href="/cambiar-password">
+            <i class="material-icons">lock_outline</i>
+            Cambiar contraseña
+        </a>
+    </li>
+    <% if current_user.doctor %>
+       <li>
+          <a href="/administracion/aprobar-pago">
+              <i class="material-icons">check_circle</i>
+              Aprobar Pagos
+          </a>
+      </li>
+      <li>
+          <a  class="collapsible-list" style=" background: #f8f8f9; color: #424242;">        
+              <i class="material-icons" style="color: #848484;">face</i>
+              Administrar Pacientes
+          </a>
+          <div class="content-list">
+                <ul>
+                  <li>
+                      <a href="/administracion/carga-masiva">
+                          <i class="material-icons">upload</i>
+                          Cargar Pacientes
+                      </a>
+                  </li>
+                  <li>
+                    <a href="/admin-patients">
+                    <i class="material-icons">
+                      <%= image_tag("icons/ic_patient.svg", :alt => "rss feed", style:"width: 25px;") %>
+                    </i>
+                      Crear un paciente
+                    </a>
+                  </li>
+                </ul>
+
+          </div>
+      </li>
+      <li>
+          <a href="/administracion/areas">
+              <i class="material-icons">border_clear</i>
+              Áreas
+          </a>
+      </li>
+      <li>
+          <a href="/administracion/plans">
+              <i class="material-icons">credit_card</i>
+              Suscripciones
+          </a>
+      </li>
+      <li>
+          <a  class="collapsible-list" style=" background: #f8f8f9; color: #424242;">        
+              <i class="material-icons" style="color: #848484;">add_to_queue</i>
+              Administrar Médicos
+          </a>
+          <div class="content-list">
+                <ul>
+                  <li>
+                    <a href="/administracion/carga-masiva-doctors">
+                      <i class="material-icons">upload</i>
+                      Cargar Médicos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/admin-create/doctor">
+                      <i class="material-icons">person</i>
+                      Crear Médico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/admin-doctors">
+                    <i class="material-icons">art_track</i>
+                      Adjutar Firma de Médico
+                    </a>
+                  </li>
+                </ul>
+          </div>
+      </li>
+      <li>
+        <a href="/admin-users">
+          <i class="material-icons">group_add</i>
+          Crear Usuarios
+        </a>
+      </li>
+      <li>
+        <a href="/admin-appointments">
+          <i class="material-icons">
+            <%= image_tag("icons/ic_forms.svg", :alt => "rss feed", style:"width: 25px;") %>
+          </i>
+          Historia Clínica
+        </a>
+      </li>
+      <li>
+          <a href="/admin-banks">
+              <i class="material-icons">
+                  <%= image_tag("icons/ic_company.svg", :alt => "rss feed", style:"width: 25px;") %>
+              </i>
+              Bancos
+          </a>
+      </li>
+      <li>
+          <a href="/admin-insurances">
+              <i class="material-icons">favorite</i>
+              Seguros
+          </a>
+      </li>
+      <li>
+          <a href="/publicidad">
+              <i class="material-icons">local_offer</i>
+              Publicidad
+          </a>
+      </li>
+      <li>
+        <a href="/enfermedades">
+          <i class="material-icons">grain</i>
+          Enfermedades
+        </a>
+      </li>
+      <li>
+          <a href="/admin-reiniciar-passwords">
+              <i class="material-icons">no_encryption</i>
+              Reiniciar Contraseña
+          </a>
+      </li>
+      <li>
+        <a  class="collapsible-list" style=" background: #f8f8f9; color: #424242;">        
+              <i class="material-icons" style="color: #848484;">equalizer</i>
+              Estadísticas
+        </a>
+        <div class="content-list">
+          <ul>
+            <li>
+              <a href="/statistics-particulares-vs-asegurados">  
+                Asegurados / Particulares
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-diagnostico">
+                Pacientes por Diagnóstico
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-especialidad">
+                Pacientes por Especialidad
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-doctor">
+                Pacientes por Médico
+              </a>
+            </li>
+            <li>
+              <a href="/statistics-pacientes-por-aseguradora">
+                Pacientes por Seguro
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    <% end %>
+   
+
+    <li style="margin-top:10%;">
+        <%= link_to destroy_user_session_path, method: :delete, style:"font-family: FuturaStd bold;" do %>
+            <i class="material-icons">exit_to_app</i>
+            Salir
+        <% end %>
+    </li>
+    
+           
+</ul>

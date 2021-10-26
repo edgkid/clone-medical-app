@@ -1,0 +1,45 @@
+<div class="card" style="width: 96%; margin-left:2%; margin-right:2%; margin-top:2%;">
+  <div class="card-header">
+    <h6 style="margin-left:2%; margin-top:2%; font-family: FuturaStd Medium;">Solicitudes de cambio de reinicio de contraseña</h6>
+    <div class="row">
+      <div class="col s12 m12">
+
+      <div >
+
+        <table id="DataTableId" >
+          <thead>
+            <tr>
+              <th scope="col" style="font-family: FuturaStd Medium;">Usuario</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Fecha de Solicitud</th>
+              <th scope="col" style="font-family: FuturaStd Medium;">Estatus</th>
+              <th scope="col" style="font-family: FuturaStd Medium;"></th>
+            </tr>
+          </thead>
+            <tbody>
+              <% @request.each do |request| %>
+                <tr>
+                  <td style="font-family: FuturaStd Medium;"><%= request.user_name  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= request.created_at.strftime("%d/%m/%Y")  %></td>
+                  <td style="font-family: FuturaStd Medium;"><%= request.status  %></td>
+                  <td style="font-family: FuturaStd Medium;"> 
+                     
+                    <%= form_with url: "/admin-reiniciar-passwords/save", method: :post, id: "formulario" do |form| %>  
+                        <input id="user_name" name="user_name" type="text" value="<%= request.user_name  %>" hidden/>
+                        <i class="material-icons" style="color: #039BE5;">sync</i> 
+                        <input type="submit" name="Aceptar" value="Reiniciar Contraseña" style="background: white; border:none; color: #039BE5;"/>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>                                    
+            </tbody>
+        </table>
+
+      </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+ 
+
+ 

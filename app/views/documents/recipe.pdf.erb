@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <%= wicked_pdf_stylesheet_link_tag 'reports_prescription' %>
+  </head>
+  <body>
+
+    <style>
+
+        tr th {
+            text-align: left;
+        }
+        tr td {
+            text-align: left;
+        }
+    </style>
+
+    <div id="header">
+        <table id="DataTableId" style="width:100%; border-bottom: 1px solid black">
+            <tr>
+                <td style="width:250px;">
+                    <%= image_tag wicked_pdf_asset_base64('logo.png'), options = { :width => 150, :height => 100} %>
+                </td>
+                <td>
+                    <p style="width:100%; margin-top:-5px;"><strong style="margin-left:89%">Telemed</strong></p>
+                    <p style="width:100%; margin-top:5%;"><h3 style="margin-left:40%;">GERENCIA ADMINISTRATIVA DE SALUD</h3></p>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+
+    <div id="content">
+        <table style="width:100%;">
+            <tr>
+                <td style="width:44%;">
+                    <p style="margin-top: 0px;"><strong>PACIENTE: <%= @prescription.appointment.patient.name + " " + @prescription.appointment.patient.last_name %> </strong></p>
+                    <p style="margin-top: -10px;"><strong>C.I: <%= @prescription.appointment.patient.document %> </strong></p>
+                    <p style="margin-top: -15px;">
+                        <% if @prescription.appointment.patient.birthday %>
+                            <strong>FECHA DE NAC: </strong><%= @prescription.appointment.patient.birthday %>
+                        <% else %>
+                            <strong>FECHA DE NAC: </strong>
+                        <% end %>
+                    
+                    </p>
+                </td>
+                <td style="width:2%;"></td>
+                <td style="width:44%;">
+                    <p style="margin-top: 0px;"><strong>Método: </strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:44%; height:450px;">
+                <%= @prescription.medicine %>
+                </td>
+                <td style="width:2%;"></td>
+                <td style="width:44%; height:450px;">
+                <%= @prescription.use %>
+                </td>
+
+            </tr>
+            <tr>
+            <td style="width:44%; height:100px;">
+                <p style="margin-top: 0px;"><strong>MEDICO: <%= @prescription.appointment.doctor.name + " " + @prescription.appointment.doctor.last_name  %></strong></p>
+                <p style="margin-top: -15px;"><strong>PRODUCTOS NO CUBIERTOS POR EL PLAN DE SALUD (HCM) </strong></p>  
+                <p style="margin-top: -15px;"><strong>Caracas____de _____________de____________</strong></p>                
+            </td>
+            <td style="width:2%;"></td>
+            <td style="width:44%; height:100px;">
+                <p style="margin-top: 0px;"><strong>MEDICO: <%= @prescription.appointment.doctor.name + " " + @prescription.appointment.doctor.last_name  %> </strong></p>
+                <p style="margin-top: -15px;"><strong>PRODUCTOS NO CUBIERTOS POR EL PLAN DE SALUD (HCM) </strong></p>  
+                <p style="margin-top: -15px;"><strong>Caracas____de _____________de____________</strong></p>      
+            </td>
+        </tr>
+        </table>
+        <table>
+            <tr>
+                <td style="width:79%;"></td>
+                <td >
+                    Firma médico tratante:
+                </td>
+                <td >
+                    <% if @prescription.appointment.doctor.firm != nil %>
+                        <img src="<%= @prescription.appointment.doctor.firm %>" style="width: 100px; height: 50px; margin-top: 25px; margin-left: 0px;" />
+                    <% end %>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+  
+</body>	
+</html>	

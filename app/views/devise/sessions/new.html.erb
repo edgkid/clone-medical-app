@@ -1,0 +1,132 @@
+<style>
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+
+    .row{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 10px 0px;    
+        justify-content: center;
+    }
+
+    @media only screen and (max-width : 992px) {
+        .row {
+            width: 100%;
+        }
+    }
+    input, button{
+        width: 100%;
+        margin: 0;
+        padding: 10px
+    }
+
+    button {
+        border: 0;
+        color: white;
+        cursor: pointer;
+        padding: 10px
+    }
+
+    button.login{
+        background-color: #2296f2;  
+    }
+
+    button.signup{
+        background-color: #f94181;  
+    }
+
+    .errors{
+        width: 100%;
+        padding: 10px;
+        background-color: #ff6161;
+        color: white;
+    }
+
+    .input_style{
+      border: 1px solid 	#00008B;
+    }
+
+</style>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="container">
+    <div class='login-container'>
+      <div class="row">
+        <%= image_tag "logo.png" %>            
+      </div>
+
+    <div class="row">                     
+        <div class="col s12 m12">
+            <%= render partial: 'layouts/flash' %>
+        </div>
+     </div>
+
+      
+
+      <div class="row">
+        <p style="font-family: FuturaStd Medium text-align: center; margin-bottom:0px; margin-top:0px;">Introduce tus credenciales para continuar.</p>
+      </div>
+
+      <!-- Aqui va mensaje de error--> 
+
+      <div class="row">                     
+        <div class="col s12 m12">
+            <fieldset class="field-set-style">
+                <legend class="legend-style">Correo electrónico</legend>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " correo electrónico", style:"height: 100%; padding:none; border-bottom: none; background:none;" %>
+            </fieldset>
+        </div>
+     </div>
+
+     <div class="row">                     
+        <div class="col s12 m12">
+            <fieldset class="field-set-style">
+                <legend class="legend-style">Password</legend>
+                <%= f.password_field :password, autocomplete: "current-password", placeholder: "password", style:"height: 100%; padding:none; border-bottom: none; background:none;" %>
+            </fieldset>
+        </div>
+     </div>
+
+    <div class="row">                     
+        <div class="col s12 m12">
+            <%= f.submit "Iniciar sesión", class: 'btn', style: "color: white; background:#2296f2; border:none;" %>
+        </div>
+     </div>
+
+    <div class="row">                     
+        <div class="col s12 m12">
+            
+            <p style="text-align:center; margin-bottom:0px; margin-top:0px;"><span style="font-family: FuturaStd bold;"> ¿No tienes una cuenta? </span></p>
+        </div>
+     </div>
+
+     <div class="row">                     
+        <div class="col s12 m12">
+            <%= link_to "Registrar cuenta", new_registration_path(resource_name), class: 'btn', style: 'width:100%; background: #f94181;' %>
+            
+        </div>
+     </div>
+
+    <div class="row">                     
+        <div class="col s12 m12"> 
+            <p style="text-align:center; margin-bottom:0px; margin-top:0px;"><%= link_to "¿Olvidaste tu contraseña?", solicitar_password_path, style: "font-family: FuturaStd bold;" %></p>
+        </div>
+     </div>
+
+
+    </div>
+  </div>
+  
+<% end %>
+

@@ -1,0 +1,15 @@
+<% flash.each do |key, value| %>
+
+  <% if notice %>
+    <div id="flash_message" class="<%= flash_class(key) %> lighten-2 white-text" role="alert" style="width: 100%; padding: 10px 20px; font-family: FuturaStd bold;">
+      <%= notice %>
+    </div>
+  <% end %>
+
+   <% if alert %>
+    <div id="flash_message" class="lighten-2 white-text" role="alert" style="width: 100%; padding: 10px 20px; font-family: FuturaStd bold; background:#EE6E73;">
+      <%= alert %>
+    </div>
+  <% end %>
+  
+<% end %>

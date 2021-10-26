@@ -1,0 +1,84 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+# Based on https://gist.github.com/jordigg/30fe17c6328d5deab9ec#file-devise-es-yml
+
+es:
+  devise:
+    confirmations:
+      confirmed: Su dirección de correo electrónico ha sido confirmada con éxito.
+      send_instructions: Recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en unos minutos.
+      send_paranoid_instructions: Si su correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo reiniciar su contraseña.
+      new:
+        resend_confirmation_instructions: Reenviar instrucciones de confirmación.
+    failure:
+      already_authenticated: Ya ha sido identificado.
+      inactive: Su cuenta aún no ha sido activada.
+      invalid: "%{authentication_keys} o contraseña inválidos."
+      locked: Su cuenta ha sido bloqueada.
+      last_attempt: Tiene un intento más antes de que se bloquee tu cuenta.
+      not_found_in_database: "%{authentication_keys} o contraseña inválidos."
+      timeout: Su sesión ha expirado, por favor identifíquese de nuevo para continuar.
+      unauthenticated: Necesita iniciar sesión o registrarse para continuar.
+      unconfirmed: Debe confirmar su correo electrónico antes de continuar.
+    mailer:
+      confirmation_instructions:
+        subject: Instrucciones de confirmación
+        accion: Confirmar mi cuenta
+      reset_password_instructions:
+        subject: Se le enviarán instrucciones para restablecer su contraseña
+      unlock_instructions:
+        subject: Instrucciones de desbloqueo
+      email_changed:
+        subject: Correo electrónico cambiado
+        message: Nos estamos comunicando con usted para notificarle que su correo electrónico ha cambiado a %{}
+      password_change:
+        subject: Contraseña cambiada
+    omniauth_callbacks:
+      failure: No se le ha podido autorizar de %{kind} debido a \%{reason}\.
+      success: Identificado correctamente de %{kind}.
+    passwords:
+      no_token: No puede acceder a esta página sino es por medio de un enlace para restablecer contraseña. Si ha accedido desde el enlace para restablecer la contraseña, asegúrese de que la URL esté completa.
+      send_instructions: Recibira un correo electrónico con instrucciones sobre cómo restablecer su contraseña en unos minutos.
+      send_paranoid_instructions: Si su correo electrónico existe en nuestra base de datos, recibirá un enlace para restablecer la contraseña en unos minutos.
+      updated: Su contraseña se ha cambiado. Ahora ha iniciado sesión.
+      updated_not_active: Su contraseña se ha cambiado.
+      change_your_password: Cambiar mi contraseña
+      new_password: Nueva contraseña
+      confirm_password: Confirmar nueva contraseña
+      change_my_password: Cambiar mi contraseña
+    registrations:
+      destroyed: Su cuenta ha sido cancelada. Esperamos volver a verle pronto ¡adiós!
+      signed_up: ¡Bienvenido! Te has registrado con éxito.
+      signed_up_but_inactive: Se ha registrado correctamente, pero no ha podido iniciar sesión porque su cuenta no ha sido activada.
+      signed_up_but_locked:  Se ha registrado correctamente, pero no ha podido iniciar sesión porque su cuenta está bloqueada.
+      signed_up_but_unconfirmed: Se le ha enviado un mensaje con un enlace de confirmación. Por favor visite el enlace para activar su cuenta.
+      update_needs_confirmation: Ha actualizado su cuenta correctamente, sin embargo necesitamos verificar su nueva cuenta de correo. Por favor revise su correo electrónico y visite el enlace para finalizar la confirmación de su nueva dirección de correo electrónico.
+      updated: Ha actualizado tu cuenta correctamente.
+      updated_but_not_signed_in: Su cuenta se actualizó correctamente, pero como se modificó su contraseña, debe iniciar sesión nuevamente.
+    sessions:
+      signed_in: Ha iniciado sesión satisfactoriamente.
+      signed_out: Ha cerrado la sesión satisfactoriamente.
+      already_signed_out: Ha cerrado la sesión satisfactoriamente.
+    unlocks:
+      send_instructions: Recibirá un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear su cuenta.
+      send_paranoid_instructions: Si su cuenta existe, recibirá un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear su cuenta.
+      unlocked: Su cuenta ha sido desbloqueada. Por favor inicie sesión para continuar.
+    new:
+      sign_up: Registrarse
+      log_in: Iniciar sesión
+    shared:
+      links:
+        didn_t_receive_confirmation_instructions: ¿No ha recibido las instrucciones de confirmación?
+        forgot_your_password: ¿Ha olvidado su contraseña?
+        didn_t_receive_unlock_instructions: ¿No ha recibido instrucciones para desbloquear?
+    unlock_instructions:
+      mail: Ingrese su correo electrónico
+  errors:
+    messages:
+      already_confirmed: ya ha sido confirmado, por favor intente iniciar sesión.
+      confirmation_period_expired:  necesita ser confirmado en %{period}, por favor vuelva a solicitarla.
+      expired: ha expirado, por favor vuelva a solicitarla.
+      not_found: no se encontró.
+      not_locked: no estaba bloqueado.
+      not_saved:
+        one: 1 error impidió que este %{resource} fuese guardado
+        other: "%{count} errores impidieron que este %{resource} fuese guardado:"
